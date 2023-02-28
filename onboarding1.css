@@ -1,0 +1,55 @@
+@media (max-width: 390px) {
+    body {
+        position: relative;
+        background-image: url("./images/Onboarding\ Screen\ 1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    div {
+        /* position: absolute; */
+        margin: 15px;
+    }
+
+    div .cont{
+        position: absolute;
+        top: 525px;
+        color: white;
+        font-size: 27px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        /* display: flex; */
+        /* margin: auto; */
+        /* text-align: justify; */
+    }
+
+    div p {
+        position: absolute;
+        top: 670px;
+        left: 45px;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        margin: auto;
+        font-weight: 700;
+        /* line-height: 0; */
+        font-size: smaller;
+        width: 300px;
+        /* text-align: justify; */
+        /* margin-top: 13px; */
+    }
+
+    div button {
+        position: absolute;
+        width: 92%;
+        top: 710px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        padding: 10px;
+        margin-top: 15px;
+        background-color: rgb(137, 2, 62);
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+}

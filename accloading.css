@@ -1,0 +1,37 @@
+@media (max-width: 390px) {
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+    .spinner-border {
+        color: rgb(137, 2, 62);
+    }
+
+    .wip{
+        margin-top: 270px;
+    }
+
+    img {
+        width: 120px;
+        display: flex;
+        margin: auto;
+        margin-top: 60px;
+    }
+
+    .inner {
+        margin: 0 35px;
+        margin-top: 25px;
+    }
+
+    .inner h3 {
+        font-weight: 900;
+        width: 323px;
+        text-align: center;
+    }
+
+    .inner p {
+        font-size: smaller;
+        font-weight: 900;
+        width: 310px;
+        text-align: center;
+    }
+}
