@@ -1,17 +1,16 @@
 @media (max-width: 390px) {
     img {
         width: 120px;
-        /* height: 50px; */
         display: flex;
         margin: auto;
         margin-top: 60px;
     }
-    
+
     main {
         margin-top: 30px;
         margin: 20px;
     }
-    
+
     main h2 {
         display: flex;
         justify-content: center;
@@ -20,7 +19,7 @@
         color: black;
         margin: 0;
     }
-    
+
     main p {
         display: flex;
         justify-content: center;
@@ -29,11 +28,11 @@
         font-weight: 700;
         font-size: smaller;
     }
-    
+
     form {
         margin-top: 40px;
     }
-    
+
     .section {
         display: block;
         margin: 20px 0;
@@ -62,12 +61,12 @@
         font-weight: 900;
         display: flex;
         margin: auto;
-        padding: 10px 95px;
+        padding: 10px 130px;
         border-radius: 5px;
         border: none;
     }
     
-    .have {
+    .dont {
         display: flex;
         justify-content: center;
         color: rgb(137, 2, 62);
@@ -75,5 +74,5 @@
         font-size: small;
         font-weight: 900;
         margin-top: 10px;
-    }    
+    } 
 }
