@@ -25,9 +25,10 @@ function create() {
     }
 
     // Check if accountInfo already exists in local storage
-    if (storedAccountInfo) {
-        accountInfo = JSON.parse(storedAccountInfo)
-    }else {
+    // if (storedAccountInfo) {
+    //     accountInfo = JSON.parse(storedAccountInfo)
+    // }
+    else {
         function accountNumber() {
             const randomNumber = Math.floor(Math.random() * 1000000000);
             const accountNumber = randomNumber.toString().padStart(9, "0");
@@ -47,16 +48,23 @@ function create() {
 }
 
 // Login Account
+let inapp = []
 let emailog = document.getElementById("emaillog"),
 passwordlog = document.getElementById("passwordlog");
 
 let registered = JSON.parse(localStorage.getItem("account"));
+
+// let loggedAcccountInfo = JSON.parse.localStorage("loggeduser")
 
 function login() {
     let found = registered.find((element) => element.email == emailog.value && element.password == passwordlog.value); 
     if(found){
         alert("Login Successful")
         window.location.href= "dashboard.html"
+
+        inapp.push(found)
+        localStorage.setItem("loggeduser", JSON.stringify(found));
+        //  console.log(found);
     }else{
         alert("User not found")
     }
@@ -81,7 +89,7 @@ accountInfo = JSON.parse(localStorage.getItem("account"));
 for (let i = 0; i < accountInfo.length; i++) {
     const element = accountInfo[i];
 
-    show.innerHTML = `<div class="num">${element.accountnumber}</div>`
+    show.innerHTML = `<div class="num">${element.accountnumber}</div>`;
     
 }
 
@@ -94,4 +102,16 @@ const copyContent = async () => {
     } catch (err) {
         console.error("Failed to copy:", err);
     }
+    window.location.href = "login.html"
+}
+
+// Print Account User's name 
+let shon = document.getElementById("use")
+
+let gotte = JSON.parse(localStorage.getItem("loggeduser"));
+
+for (let i = 0; i < gotte.length; i++) {
+    const element = gotte[i];
+    
+    shon.innerHTML = `<p>Hinder,${element.firstname}<p>`
 }
