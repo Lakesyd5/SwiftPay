@@ -13,9 +13,21 @@
     <img src="./images/SwiftPay Image Assets/SwiftPay.png" alt="">
 
     <h2>Your Account Number is</h2>
-    <div class="show" id="show"></div>
+    <div class="show" id="see"></div>
     <button onclick="copyContent()">Save Account Number</button>
     <p>This is your unique SwiftNumber</p>
     <script src="app.js"></script>
 </body>
 </html>
+<script>
+    window.onload = function () {
+    let screen = document.getElementById("see");
+    let acc = JSON.parse(localStorage.getItem("account"));
+
+    acc.forEach(element => {
+        console.log(element);
+
+        screen.innerHTML = `<div class="num" >${element.accountnumber}</div>`;
+    });
+}
+</script>

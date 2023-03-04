@@ -202,4 +202,9 @@
       color: white;
       padding: 5px 15px;
    }
+
+   .name {
+      font-weight: 900;
+   }
+
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    </style>
+    <link rel="stylesheet" href="pingenerated.css">
+</head>
+
+<body>
+    <img src="./images/SwiftPay Image Assets/SwiftPay.png" alt="">
+
+    <h2>Your Transactional Pin is</h2>
+    <div class="show" id="pin"></div>
+    <button onclick="copyPin()">Save Transaction Pin</button>
+    <p>Please ensure to keep this pin safe</p>
+    <script src="app.js"></script>
+</body>
+
+</html>
+
+<script>
+    let scp = document.getElementById("pin");
+    let nom = JSON.parse(localStorage.getItem("account"))
+
+    nom.forEach(element => {
+        scp.innerHTML = `<div class="nom">${element.pin}</div>`
+    });
+</script>

@@ -10,11 +10,12 @@ function getstr() {
 
 // Creating an account
 let accountInfo = [];
-let firstname = document.getElementById("firstname"),
-lastname = document.getElementById("lastname"),
-email = document.getElementById("email"),
-password = document.getElementById("password"),
-repeat = document.getElementById("repeat");
+let firstname = document.getElementById("firstname");
+let lastname = document.getElementById("lastname");
+let email = document.getElementById("email");
+let password = document.getElementById("password");
+let repeat = document.getElementById("repeat");
+let pinInput = document.getElementById("pinn"); 
 
 let storedAccountInfo = localStorage.getItem("account");
 
@@ -34,38 +35,41 @@ function create() {
             const accountNumber = randomNumber.toString().padStart(9, "0");
             return accountNumber;
         }
+
         userInfo = {
             firstname: firstname.value,
             lastname: lastname.value,
             email: email.value,
             password: password.value,
-            accountnumber: accountNumber()
+            accountnumber: accountNumber(),
+            pin: null
         }
         accountInfo.push(userInfo)
         localStorage.setItem("account", JSON.stringify(accountInfo));
+        alert("Account created successfully");
+        window.location.href = "accloading.html"
     }
-    window.location.href = "accloading.html"
+
 }
 
 // Login Account
 let inapp = []
 let emailog = document.getElementById("emaillog"),
-passwordlog = document.getElementById("passwordlog");
+    passwordlog = document.getElementById("passwordlog");
 
 let registered = JSON.parse(localStorage.getItem("account"));
 
 // let loggedAcccountInfo = JSON.parse.localStorage("loggeduser")
 
 function login() {
-    let found = registered.find((element) => element.email == emailog.value && element.password == passwordlog.value); 
-    if(found){
+    let found = registered.find((element) => element.email == emailog.value && element.password == passwordlog.value);
+    if (found) {
         alert("Login Successful")
-        window.location.href= "dashboard.html"
+        window.location.href = "dashboard.html"
 
         inapp.push(found)
         localStorage.setItem("loggeduser", JSON.stringify(found));
-        //  console.log(found);
-    }else{
+    } else {
         alert("User not found")
     }
 }
@@ -81,37 +85,64 @@ function dontHave() {
     window.location.href = "signup.html"
 }
 
-// Print Account Number
-let show = document.getElementById("show")
-
-accountInfo = JSON.parse(localStorage.getItem("account"));
-
-for (let i = 0; i < accountInfo.length; i++) {
-    const element = accountInfo[i];
-
-    show.innerHTML = `<div class="num">${element.accountnumber}</div>`;
-    
-}
-
 // Save Account Number
+let show = document.getElementById("see")
 const copyContent = async () => {
     try {
         await navigator.clipboard.writeText(show.innerText);
-        alert("Copied to clipboard");
-    
+        alert("Copied");
+
+    } catch (err) {
+        console.error("Failed to copy:", err);
+    }
+    window.location.href = "setpin.html"
+}
+
+// Set Account Use's Pin
+function savePin() {
+    pinInput = document.getElementById("pinn");
+    if (!pinInput) {
+        alert("PIN input not found");
+        return;
+    }
+    if (pinInput.value.length !== 4 || !/^\d+$/.test(pinInput.value)) {
+        alert("please enter a valid 4-digit PIN");
+        return;
+    } 
+    storedAccountInfo = localStorage.getItem("account");
+    if (storedAccountInfo) {
+        accountInfo = JSON.parse(storedAccountInfo);
+        let lastUserInfo = accountInfo[accountInfo.length -1];
+        lastUserInfo.pin = pinInput.value;
+        localStorage.setItem("account", JSON.stringify(accountInfo));
+        alert("PIN set");
+        window.location.href = "pingenerated.html";
+    }
+}
+
+// Save Pin
+let seep = document.getElementById("pin")
+const copyPin = async () => {
+    try {
+        await navigator.clipboard.writeText(seep.innerText);
+        alert("Copied");
+        console.log("working");
+
     } catch (err) {
         console.error("Failed to copy:", err);
     }
     window.location.href = "login.html"
 }
 
+// Print Pin 
+
+
 // Print Account User's name 
-let shon = document.getElementById("use")
+window.onload = function () {
+    let shon = document.getElementById("use")
 
-let gotte = JSON.parse(localStorage.getItem("loggeduser"));
+    let gotte = JSON.parse(localStorage.getItem("loggeduser"));
+    console.log(gotte);
 
-for (let i = 0; i < gotte.length; i++) {
-    const element = gotte[i];
-    
-    shon.innerHTML = `<p>Hinder,${element.firstname}<p>`
+    shon.innerHTML = `<p class="name">Hi,${gotte.firstname}<p>`
 }
