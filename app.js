@@ -15,7 +15,7 @@ let lastname = document.getElementById("lastname");
 let email = document.getElementById("email");
 let password = document.getElementById("password");
 let repeat = document.getElementById("repeat");
-let pinInput = document.getElementById("pinn"); 
+let pinInput = document.getElementById("pinn");
 
 let storedAccountInfo = localStorage.getItem("account");
 
@@ -24,11 +24,6 @@ function create() {
     if (repeat.value !== password.value) {
         alert("Password does Not Match")
     }
-
-    // Check if accountInfo already exists in local storage
-    // if (storedAccountInfo) {
-    //     accountInfo = JSON.parse(storedAccountInfo)
-    // }
     else {
         function accountNumber() {
             const randomNumber = Math.floor(Math.random() * 1000000000);
@@ -36,14 +31,21 @@ function create() {
             return accountNumber;
         }
 
-        userInfo = {
+        let userInfo = {
             firstname: firstname.value,
             lastname: lastname.value,
             email: email.value,
             password: password.value,
             accountnumber: accountNumber(),
+            balance: 20000.00,
             pin: null
         }
+
+        // Check if accountInfo already exists in local storage
+        if (storedAccountInfo) {
+            accountInfo = JSON.parse(storedAccountInfo)
+        }
+
         accountInfo.push(userInfo)
         localStorage.setItem("account", JSON.stringify(accountInfo));
         alert("Account created successfully");
@@ -108,11 +110,11 @@ function savePin() {
     if (pinInput.value.length !== 4 || !/^\d+$/.test(pinInput.value)) {
         alert("please enter a valid 4-digit PIN");
         return;
-    } 
+    }
     storedAccountInfo = localStorage.getItem("account");
     if (storedAccountInfo) {
         accountInfo = JSON.parse(storedAccountInfo);
-        let lastUserInfo = accountInfo[accountInfo.length -1];
+        let lastUserInfo = accountInfo[accountInfo.length - 1];
         lastUserInfo.pin = pinInput.value;
         localStorage.setItem("account", JSON.stringify(accountInfo));
         alert("PIN set");
@@ -134,15 +136,8 @@ const copyPin = async () => {
     window.location.href = "login.html"
 }
 
-// Print Pin 
+// Print Balance
 
-
-// Print Account User's name 
-window.onload = function () {
-    let shon = document.getElementById("use")
-
-    let gotte = JSON.parse(localStorage.getItem("loggeduser"));
-    console.log(gotte);
-
-    shon.innerHTML = `<p class="name">Hi,${gotte.firstname}<p>`
-}
+let bal = document.getElementById("balance");
+let loged = JSON.parse(localStorage.getItem("loggeduser"));
+bal.innerHTML = `NGN ${loged.balance}`

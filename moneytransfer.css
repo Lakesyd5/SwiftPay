@@ -1,0 +1,103 @@
+@media (max-width: 390px) {
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+    .body {
+        background-color: whitesmoke;
+    }
+
+    main {
+        margin: 0 32px;
+        display: block;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    nav div {
+        font-weight: 700;
+        margin-left: 10px;
+    }
+
+    .accname {
+        margin-top: 45px;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    input {
+        display: block;
+        width: 100%;
+        padding: 11px;
+        border-radius: 5px;
+        border: 1px solid grey;
+    }
+
+    .select {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 28px;
+        border-radius: 3px;
+        border: none;
+        background-color: rgb(217,176,194);
+        padding: 11px;
+        font-weight: 600;
+        /* font-size: smaller; */
+    }
+
+    .select span {
+        margin-left: 8px;
+        font-size: medium;
+        font-weight: 900;
+    }
+
+    .proceed {
+        width: 100%;
+        border: none;
+        border-radius: 7px;
+        color: white;
+        background-color: rgb(137,2,62);
+        margin-top: 40px;
+        padding: 10px 0;
+        font-weight: 700;
+    }
+
+    /* Modal Styling */
+    .modal-fade {
+        width: 50px;
+    }
+
+    .modal-body h2 {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        font-weight: 900;
+    }
+
+    .bnk {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 35px 0;
+    }
+
+    .bnk button p {
+        font-size: smaller;
+        font-weight: 900;
+        width: 100px;
+        margin-top: 10px;
+    }
+
+    .bnk button {
+        padding: 0;
+        width: fit-content;
+        margin: 2px;
+        background: none;
+        border: none;
+    }
+}
