@@ -141,3 +141,23 @@ const copyPin = async () => {
 let bal = document.getElementById("balance");
 let loged = JSON.parse(localStorage.getItem("loggeduser"));
 bal.innerHTML = `NGN ${loged.balance}`
+
+// Transfer Money (Movin tothe main transfer page)
+function transfer() {
+    window.location.href = "moneytransfer.html"
+}
+
+// Going back to dashboard from the first transfer page
+function backtoDash() {
+    window.location.href = "dashboard.html"
+}
+
+// Going back to BankSelect Page 
+function toFirst() {
+    window.location.href = "moneytransfer.html"
+}
+
+// selectBank
+
+// let bankName = "MyBank"
+// proceed("bankName")

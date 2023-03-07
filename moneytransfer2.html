@@ -17,14 +17,16 @@
 <body class="body">
     <!-- Nav -->
     <nav>
-        <span class="material-symbols-outlined">
+        <span onclick="toFirst()" class="material-symbols-outlined">
             arrow_back
         </span>
         <div>Transfer to Bank account</div>
     </nav>
     <!--  -->
     <main>
-        <div></div>
+        <div class="show">
+            <div id="receiverinfo"></div>
+        </div>
         <form action="">
             <label for="">How much do you want to send?</label>
             <input type="number" name="" id="howmuch" placeholder="Enter amount">
@@ -37,3 +39,7 @@
 </body>
 
 </html>
+<script>
+let receiver = JSON.parse(localStorage.getItem("sendto"));
+
+</script>

@@ -19,7 +19,7 @@
 <body class="body">
     <!-- Nav -->
     <nav>
-        <span class="material-symbols-outlined">
+        <span onclick="backtoDash()" class="material-symbols-outlined">
             arrow_back
         </span>
         <div>Transfer to Bank account</div>
@@ -28,14 +28,15 @@
     <main>
         <!-- Receipient Account Number & Bank select section -->
         <div class="accname">Recipient's Account Number</div>
-        <input type="number" name="" id="" placeholder="Enter 9-digit Account Number">
-        <button class="select" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <input type="number" name="" id="accountNumber" maxlength="9" minlength="9"
+            placeholder="Enter 9-digit Account Number">
+        <button class="select" data-bs-toggle="modal" data-bs-target="#exampleModal" id="select">
             Select Bank
             <span class="material-symbols-outlined">arrow_forward</span>
         </button>
         <!--  -->
         <!-- Transfer Button -->
-        <button class="proceed">Proceed to pay</button>
+        <button onclick="proceed()" class="proceed">Proceed to pay</button>
         <!--  -->
 
         <!-- Modal -->
@@ -45,27 +46,27 @@
                     <div class="modal-body">
                         <h2>Select Bank</h2>
                         <div class="bnk">
-                            <button onclick="swiftpay()">
+                            <button onclick="selectBank('SWIFTPAY')">
                                 <img src="./images/Group 80.png" alt="">
                                 <p>SWIFTPAY</p>
                             </button>
-                            <button>
+                            <button onclick="selectBank('FIRST BANK PLC')">
                                 <img src="./images/Ellipse 6.png" alt="">
                                 <p>FIRST BANK PLC</p>
                             </button>
-                            <button>
+                            <button onclick="selectBank('GTBANK PLC')">
                                 <img src="./images/Ellipse 7.png" alt="">
                                 <p>GTBANK PLC</p>
                             </button>
-                            <button>
+                            <button onclick="selectBank('KUDA BANK')">
                                 <img src="./images/Ellipse 9.png" alt="">
                                 <p>KUDA BANK</p>
                             </button>
-                            <button>
+                            <button onclick="selectBank('ACCESS BANK')">
                                 <img src="./images/Ellipse 8.png" alt="">
                                 <p>ACCESS BANK NIGERIA</p>
                             </button>
-                            <button>
+                            <button onclick="selectBank('OPAY')">
                                 <img src="./images/Ellipse 5.png" alt="">
                                 <p>OPAY</p>
                             </button>
@@ -82,3 +83,42 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
+
+<script>
+    let selectedBankName;
+    let selscr = document.getElementById("select")
+
+    function selectBank(bankName) {
+        selectedBankName = bankName;
+        console.log("Selected bank: " + selectedBankName);
+        selscr.innerText = selectedBankName
+
+    }
+
+    // Proceed Button
+    let InpAcc = document.getElementById("accountNumber");
+    let users = JSON.parse(localStorage.getItem("account"));
+    
+    function proceed() {
+        let userData = users.find((element) => element.accountnumber === InpAcc.value)
+        if (InpAcc.value === "" || InpAcc.value.length < 9) {
+            alert("Input Receiver's Account Number")
+        }
+        if (selectedBankName) {
+            // Bank selected, proceed with transaction
+            console.log("Sending money from SWIFTPAY");
+            alert("Proceed to make payment to " + selectedBankName);
+            window.location.href = "moneytransfer2.html"
+
+        } else {
+            // No bak selected, show error message
+            alert("Please select a bank")
+        }
+        if (userData) {
+            console.log(userData);
+            localStorage.setItem("sendto", JSON.stringify(userData))
+        }else{
+            alert("User Not Found")
+        }
+    }
+</script>

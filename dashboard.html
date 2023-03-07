@@ -42,7 +42,7 @@
         <!-- Quick Actions Sections -->
         <div class="other-label">Quick Actions</div>
         <div class="quick-actions">
-            <button>
+            <button onclick="transfer()">
                 <img src="./images/SwiftPay Image Assets/money-transfer 2.png" alt="">
                 <p>Transfer</p>
             </button>
@@ -124,6 +124,6 @@ window.onload = function () {
     let gotte = JSON.parse(localStorage.getItem("loggeduser"));
     console.log(gotte);
 
-    shon.innerHTML = `<p class="name">Hi,${gotte.firstname}<p>`
+    shon.innerHTML = `<p class="name">Hi, ${gotte.firstname}<p>`
 }
 </script>
