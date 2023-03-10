@@ -157,7 +157,5 @@ function toFirst() {
     window.location.href = "moneytransfer.html"
 }
 
-// selectBank
+// Transaction Details
 
-// let bankName = "MyBank"
-// proceed("bankName")

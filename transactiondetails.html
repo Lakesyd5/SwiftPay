@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction details</title>
+    <link rel="stylesheet" href="transactiondetails.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    </style>
+</head>
+
+<body class="body">
+    <!-- Nav -->
+    <nav>
+        <span onclick="toFirst()" class="material-symbols-outlined">
+            arrow_back
+        </span>
+        <div>Transfer to Bank account</div>
+    </nav>
+    <!--  -->
+
+    <!-- Printing Screen -->
+    <main>
+        <div class="header">Transaction Details</div>
+        <section>
+            <div>
+                <p>Account Number</p>
+                <div id="renum"></div>
+            </div>
+            <img src="./images/Group 65.png" alt="">
+        </section>
+        <section>
+            <div>
+                <p>Recipient's Name</p>
+                <div id="rename"></div>
+            </div>
+            <img src="./images/Group 65.png" alt="">
+        </section>
+        <section>
+            <div>
+                <p>Recipient's Bank</p>
+                <div id="rebank"></div>
+            </div>
+            <img src="./images/Group 65.png" alt="">
+        </section>
+        <section>
+            <div>
+                <p>Amount to be sent</p>
+                <div id="amtsnt"></div>
+            </div>
+            <img src="./images/Group 65.png" alt="">
+        </section>
+    </main>
+    <div class="shoblc" id="showblc"></div>
+    <button>
+        <span id="blcc"></span>
+    </button>
+    <!--  -->
+</body>
+
+</html>
+
+<script>
+    let userBlc = JSON.parse(localStorage.getItem("loggeduser"))
+    let receiver = JSON.parse(localStorage.getItem("sendto"));
+    let amountValue = JSON.parse(localStorage.getItem("amount"));
+    let acchow = document.getElementById("renum");
+    let accname = document.getElementById("rename");
+    let accbank = document.getElementById("rebank");
+    let accamn = document.getElementById("amtsnt");
+    let shoblc = document.getElementById("showblc");
+    let scrnblc = document.getElementById("blcc")
+
+    acchow.innerText = `${receiver.accountnumber}`;
+    accname.innerHTML = `${receiver.firstname} ${receiver.lastname}` 
+    accbank.innerHTML = `SWIFTPAY`;
+    accamn.innerHTML = "NGN" + " " + amountValue
+    shoblc.innerHTML = `Available Balance: NGN ${userBlc.balance}`
+    scrnblc.innerHTML = "Pay NGN" + " " + amountValue 
+</script>

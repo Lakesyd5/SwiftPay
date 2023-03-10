@@ -22,6 +22,10 @@
         margin-left: 10px;
     }
 
+    form {
+        margin-top: 30px;
+    }
+
     input{
         display: block;
         width: 93%;
@@ -45,5 +49,44 @@
         margin-top: 5px;
         padding: 10px 0;
         font-weight: 700;
+    }
+
+    .receiver {
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        /* align-items: center; */
+    }
+
+    .shw img {
+        height: 100px;
+        width: 100px;
+        display: flex;
+        margin: auto;
+    }
+
+    .shw h2 {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        margin-top: 10px;
+        /* margin: auto; */
+    }
+
+    .shw .acnum {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        font-size: small;
+        font-weight: 600;
+    }
+
+    .shw .avail {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        font-size: smaller;
+        color: gray;
+        margin-top: 1px;
     }
 }

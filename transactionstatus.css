@@ -1,0 +1,16 @@
+@media (max-width: 390px) {
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    nav {
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    nav div {
+        font-weight: 900;
+        margin-left: 10px;
+    }
+}

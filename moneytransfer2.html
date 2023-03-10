@@ -25,21 +25,72 @@
     <!--  -->
     <main>
         <div class="show">
-            <div id="receiverinfo"></div>
+            <div class="receiver" id="receiverinfo"></div>
         </div>
         <form action="">
             <label for="">How much do you want to send?</label>
             <input type="number" name="" id="howmuch" placeholder="Enter amount">
             <label for="">Enter your transactional pin to complete</label>
-            <input type="number" name="" id="tranpin" placeholder="Your 4-Digit Pin">
+            <input type="password" name="" id="tranpin" maxlength="4" minlength="4" placeholder="Your 4-Digit Pin">
         </form>
-        <button>Next</button>
+        <button onclick="sendMoney()">Next</button>
     </main>
     <script src="app.js"></script>
 </body>
 
 </html>
 <script>
-let receiver = JSON.parse(localStorage.getItem("sendto"));
+    let receiver = JSON.parse(localStorage.getItem("sendto"));
+    let sender = JSON.parse(localStorage.getItem("loggeduser"));
+    let rescreen = document.getElementById("receiverinfo");
 
+    rescreen.innerHTML = `<div class="shw">
+    <img src="./images/Group 80.png" alt="">
+    <h2>${receiver.firstname} ${receiver.lastname}</h2>
+    <p class="acnum">SWIFTPAY(${receiver.accountnumber})</p>
+    <p class="avail">Available Balance:NGN${sender.balance.toFixed(2)}</p>
+    </div>
+`
+    let allTransactions = []
+    let amount = document.getElementById("howmuch");
+    let tranpin = document.getElementById("tranpin")
+
+    function sendMoney() {
+        let receiver = JSON.parse(localStorage.getItem("sendto"));
+        let sender = JSON.parse(localStorage.getItem("loggeduser"));
+        let mainAccounts = JSON.parse(localStorage.getItem("account"));
+        if(!mainAccounts){
+            console.error("Cannot find accounts in localstorage.");
+            return;
+        }
+        let senderAccount = mainAccounts.find(account => account.accountnumber == sender.accountnumber);
+        let receiverAccount = mainAccounts.find(account => account.accountnumber == receiver.accountnumber)
+        if (sender.pin === tranpin.value) {
+            senderAccount.balance -= amount.value;
+            receiverAccount.balance += parseFloat(amount.value);
+            sender.balance -= amount.value;
+            receiver.balance += parseFloat(amount.value)
+
+            let transactionData = {
+                from: sender.firstname + " " + sender.lastname,
+                to: receiver.firstname + " " + receiver.lastname,
+                type: "debit",
+                amount: parseFloat(amount.value)
+            }
+
+            allTransactions.push(transactionData);
+            localStorage.setItem("Transhistory", JSON.stringify(allTransactions));
+
+            // Update Original Sender and Receiver Objects in memory
+            localStorage.setItem("sendto", JSON.stringify(receiver));
+            localStorage.setItem("loggeduser", JSON.stringify(sender));
+            localStorage.setItem("account", JSON.stringify(mainAccounts));
+            localStorage.setItem("amount", amount.value.toString());
+
+            alert("Processing")
+            window.location.href = "transactiondetails.html"
+        } else {
+            alert("PIN incorrect")
+        }
+    }
 </script>
