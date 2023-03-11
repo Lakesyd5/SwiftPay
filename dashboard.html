@@ -126,4 +126,10 @@ window.onload = function () {
 
     shon.innerHTML = `<p class="name">Hi, ${gotte.firstname}<p>`
 }
+
+// Print Balance
+
+let bal = document.getElementById("balance");
+let loged = JSON.parse(localStorage.getItem("loggeduser"));
+bal.innerHTML = `NGN ${loged.balance}`
 </script>

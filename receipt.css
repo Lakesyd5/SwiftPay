@@ -14,25 +14,37 @@
         margin-left: 10px;
     }
 
-    main {
-        margin: 230px 30px 0 30px;
-    }
-
-    img {
+    .ret img {
+        width: 120px;
         display: flex;
         margin: auto;
-    }
-    
-    h3 {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 0;
+        margin-top: 60px;
     }
 
-    div {
+    .header {
         display: flex;
         justify-content: center;
-        margin-top: 5px;
+        font-weight: 800;
+        font-size: larger;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+
+    section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom:  15px;
+    }
+
+    main {
+        margin: 0 30px;
+    }
+    
+    p {
+        font-size: smaller;
+        font-weight: 600;
+        margin: 0;
     }
 
     button {
@@ -40,11 +52,9 @@
         border-radius: 7px;
         color: white;
         background-color: rgb(137, 2, 62);
-        margin-top: 8px;
-        /* padding: 10px 0; */
+        margin-top: 70px;
         font-weight: 700;
         width: 100%;
         padding: 10px 0;
     }
-    
 }

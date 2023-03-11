@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaction details</title>
-    <link rel="stylesheet" href="transactiondetails.css">
+    <title>Receipt</title>
+    <link rel="stylesheet" href="receipt.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
     <style>
@@ -14,19 +14,20 @@
     </style>
 </head>
 
-<body class="body">
+<body>
     <!-- Nav -->
     <nav>
         <span onclick="toFirst()" class="material-symbols-outlined">
             arrow_back
         </span>
-        <div>Transfer to Bank account</div>
+        <div>Transfer Status</div>
     </nav>
     <!--  -->
 
-    <!-- Printing Screen -->
+    <!-- Main Contents -->
     <main>
-        <div class="header">Transaction Details</div>
+        <span class="ret"><img src="./images/SwiftPay Image Assets/SwiftPay.png" alt=""></span>
+        <div class="header">Transaction Receipt</div>
         <section>
             <div>
                 <p>Account Number</p>
@@ -50,18 +51,16 @@
         </section>
         <section>
             <div>
-                <p>Amount to be sent</p>
+                <p>Amount Sent</p>
                 <div id="amtsnt"></div>
             </div>
             <img src="./images/Group 65.png" alt="">
         </section>
+        <button onclick="saveRe()">Save Receipt</button>
     </main>
-    <div class="shoblc" id="showblc"></div>
-    <button onclick="pay()">
-        <span id="blcc"></span>
-    </button>
     <!--  -->
 </body>
+
 </html>
 <script src="app.js"></script>
 
@@ -69,17 +68,17 @@
     let userBlc = JSON.parse(localStorage.getItem("loggeduser"))
     let receiver = JSON.parse(localStorage.getItem("sendto"));
     let amountValue = JSON.parse(localStorage.getItem("amount"));
-    let acchow = document.getElementById("renum");
-    let accname = document.getElementById("rename");
-    let accbank = document.getElementById("rebank");
-    let accamn = document.getElementById("amtsnt");
-    let shoblc = document.getElementById("showblc");
-    let scrnblc = document.getElementById("blcc")
+    let acnum = document.getElementById("renum");
+    let acnam = document.getElementById("rename");
+    let bannam = document.getElementById("rebank");
+    let amt = document.getElementById("amtsnt")
 
-    acchow.innerText = `${receiver.accountnumber}`;
-    accname.innerHTML = `${receiver.firstname} ${receiver.lastname}` 
-    accbank.innerHTML = `SWIFTPAY`;
-    accamn.innerHTML = "NGN" + " " + amountValue
-    shoblc.innerHTML = `Available Balance: NGN ${userBlc.balance}`
-    scrnblc.innerHTML = "Pay NGN" + " " + amountValue 
+    acnum.innerHTML = `${receiver.accountnumber}`;
+    acnam.innerHTML = `${receiver.firstname} ${receiver.lastname}`;
+    bannam.innerHTML = `SWIFTPAY`;
+    amt.innerHTML = "NGN" + " " + amountValue;
+
+    function saveRe() {
+        window.location.href = "dashboard.html"
+    }
 </script>

@@ -136,11 +136,7 @@ const copyPin = async () => {
     window.location.href = "login.html"
 }
 
-// Print Balance
 
-let bal = document.getElementById("balance");
-let loged = JSON.parse(localStorage.getItem("loggeduser"));
-bal.innerHTML = `NGN ${loged.balance}`
 
 // Transfer Money (Movin tothe main transfer page)
 function transfer() {
@@ -158,4 +154,19 @@ function toFirst() {
 }
 
 // Transaction Details
+function pay() {
+    window.location.href = "transactionstatus.html"
+}
 
+// Transaction Status
+let ofshow = document.getElementById("diser");
+let rein = JSON.parse(localStorage.getItem("sendto"));
+let amVal = JSON.parse(localStorage.getItem("amount"));
+
+ofshow.innerHTML = `You sent ${amVal} to ${rein.firstname} ${rein.lastname}`;
+
+function receipt() {
+    window.location.href = "receipt.html"
+}
+
+// Receipt

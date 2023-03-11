@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,14 +13,36 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
     </style>
 </head>
+
 <body>
     <!-- Nav -->
     <nav>
         <span onclick="toFirst()" class="material-symbols-outlined">
             arrow_back
         </span>
-        <div>Transfer to Bank account</div>
+        <div>Transfer Status</div>
     </nav>
     <!--  -->
+
+    <!-- Main Display -->
+    <main>
+        <img src="./images/Group 82.png" alt="">
+        <h3>Successfully Transferred</h3>
+        <div id="diser"></div>
+        <button onclick="receipt()">Get Receipt</button>
+    </main>
 </body>
+
 </html>
+<script src="app.js"></script>
+<script>
+    let ofshow = document.getElementById("diser");
+    let rein = JSON.parse(localStorage.getItem("sendto"));
+    let amVal = JSON.parse(localStorage.getItem("amount"));
+
+    ofshow.innerHTML = `You sent ${amVal} to ${rein.firstname} ${rein.lastname}`;
+
+    function receipt() {
+        window.location.href = "receipt.html"
+    }
+</script>
