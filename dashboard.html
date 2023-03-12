@@ -15,7 +15,7 @@
     <main>
         <!-- Nav Area -->
         <nav>
-            <div class="user-info">
+            <div class="user-info" onclick="inUser()">
                 <img src="./images/cat.jpg" alt="">
                 <div class="user-name">
                     <div id="use"></div>
@@ -117,6 +117,10 @@
 
 
 <script>
+    let inn = JSON.parse(localStorage.getItem("loggeduser"))
+    if (!inn) {
+    window.location.href = "login.html";
+}
     // Print Account User's name 
 window.onload = function () {
     let shon = document.getElementById("use")
@@ -132,4 +136,5 @@ window.onload = function () {
 let bal = document.getElementById("balance");
 let loged = JSON.parse(localStorage.getItem("loggeduser"));
 bal.innerHTML = `NGN ${loged.balance}`
+
 </script>

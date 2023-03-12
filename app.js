@@ -158,15 +158,83 @@ function pay() {
     window.location.href = "transactionstatus.html"
 }
 
-// Transaction Status
-let ofshow = document.getElementById("diser");
-let rein = JSON.parse(localStorage.getItem("sendto"));
-let amVal = JSON.parse(localStorage.getItem("amount"));
+// Proile
+let userprofile = JSON.parse(localStorage.getItem("loggeduser"));
+let ustop = document.getElementById("userfirst");
+function inUser() {
+    window.location.href = "profile.html"
+};
 
-ofshow.innerHTML = `You sent ${amVal} to ${rein.firstname} ${rein.lastname}`;
-
-function receipt() {
-    window.location.href = "receipt.html"
+function tohome() {
+    window.location.href = "dashboard.html"
 }
 
-// Receipt
+if (ustop) {
+    ustop.innerHTML = "Hello," + " " + `${userprofile.firstname}`
+}
+
+let usernm = document.getElementById("username")
+if (usernm) {
+    usernm.innerHTML = `${userprofile.firstname} ${userprofile.lastname}`
+}
+
+let usenumber = document.getElementById("acnumber");
+if (usenumber) {
+    usenumber.innerHTML = `${userprofile.accountnumber}`
+}
+
+let usepin = document.getElementById("acpin");
+if (usepin) {
+    usepin.innerHTML = `${userprofile.pin}`
+}
+
+let secusername = document.getElementById("fist");
+if (secusername) {
+    secusername.innerHTML = `${userprofile.firstname}`
+};
+
+let secfull = document.getElementById("full");
+if (secfull) {
+    secfull.innerHTML = `${userprofile.firstname} ${userprofile.lastname}`
+}
+
+let secmail = document.getElementById("eadd");
+if (secmail) {
+    secmail.innerHTML = `${userprofile.email}`
+}
+
+// Logout an account
+function logout() {
+    localStorage.removeItem("loggeduser")
+    window.location.href = "login.html"
+}
+
+// Generate Virtual Card
+function inCard(params) {
+    window.location.href = "cardgenerate.html"
+}
+function card() {
+    window.location.href = "cardloading.html"
+    // let cardNumber = "4";
+    // for (let i = 0; i < 16; i++) {
+    //     cardNumber += Math.floor(math.random() * 10);
+    //     if (i % 4 === 3 && i != 15) {
+    //         cardNumber += " "; 
+    //     }
+    // }
+    
+}
+
+// Save Card Number
+let nom = document.getElementById("cardnum")
+const copyNum = async () => {
+    try {
+        await navigator.clipboard.writeText(nom.innerText);
+        alert("Copied");
+        console.log("working");
+
+    } catch (err) {
+        console.error("Failed to copy:", err);
+    }
+    window.location.href = "card.html"
+}

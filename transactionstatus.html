@@ -40,7 +40,7 @@
     let rein = JSON.parse(localStorage.getItem("sendto"));
     let amVal = JSON.parse(localStorage.getItem("amount"));
 
-    ofshow.innerHTML = `You sent ${amVal} to ${rein.firstname} ${rein.lastname}`;
+    ofshow.innerHTML = `You sent NGN ${amVal} to ${rein.firstname} ${rein.lastname}`;
 
     function receipt() {
         window.location.href = "receipt.html"

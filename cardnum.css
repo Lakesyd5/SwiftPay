@@ -1,0 +1,56 @@
+@media (max-width: 390px) {
+    * {
+        font-family: 'Poppins', sans-serif; 
+    }
+    
+    img {
+        width: 120px;
+        display: flex;
+        margin: auto;
+        margin-top: 60px;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        font-weight: 900;
+        margin-top: 140px;
+    }
+
+    div {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        display: flex;
+        margin: auto;
+        background-color: rgb(231,204,216);
+        width: fit-content;
+        padding: 10px ;
+    }
+
+    .num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 13px;
+    }
+
+    button {
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        margin-top: 190px;
+        background-color: rgb(137, 2, 62);
+        border: none;
+        border-radius: 5px;
+        font-size: smaller;
+        color: white;
+        width: 90%;
+        padding: 10px 0;
+    }
+    
+    .nom {
+        letter-spacing: 15px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+    }
+}
