@@ -61,7 +61,7 @@
     height: 120px;
     background-color: rgb(137, 2, 62);
     border-radius: 8px;
-    margin-top: 25px;
+    margin-top: 12px;
     line-height:0;
    }
 
@@ -101,7 +101,7 @@
 
    .other-label {
     font-size: medium;
-    margin-top: 20px;
+    margin-top: 12px;
     font-weight: 900;
    }
 
@@ -113,7 +113,7 @@
     height: 85px;
     background-color: white;
     border-radius: 8px;
-    margin-top: 22px;
+    margin-top: 12px;
     box-shadow: 3px 3px 8px grey;
    }
 
@@ -146,7 +146,7 @@
     height: fit-content;
     background-color: white;
     border-radius: 8px;
-    margin-top: 20px;
+    margin-top: 12px;
     padding: 12px;
     box-shadow: 3px 3px 8px grey;
    }
@@ -216,20 +216,24 @@
    }
 
    .prc {
-      background-color: green;
+      background-color: lightgrey;
       height: fit-content;
       width: fit-content;
       padding: 4px;
       border-radius: 5px;
+      font-weight: 700;
+      font-size: small;
    }
 
    .narat {
       font-weight: 600;
+      display: flex;
+      align-items: center;
    }
 
    .thistory {
-      height: 100px;
-      /* background-color: brown; */
+      height: 80px;
+      background-color: brown;
       overflow-y: scroll;
       padding: 0 5px;
    }

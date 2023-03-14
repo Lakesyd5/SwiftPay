@@ -242,22 +242,41 @@ const copyNum = async () => {
 // Transaction History
 let history = document.getElementById("thistory");
 let hisdata = JSON.parse(localStorage.getItem("Transhistory"));
+let loggedhistory = JSON.parse(localStorage.getItem("loggeduser"))
 
-if (hisdata) {
-    hisdata.forEach(transaction => {
+console.log(hisdata);
+
+if (history && hisdata && loggedhistory) {
+    // let userTransactions = hisdata.filter (transaction => {
+    //     return (
+    //         (transaction.from_firstname + ' ' + transaction.from_lastname) == loggedhistory.firstname + ' ' + loggedhistory.lastname ||
+    //         (transaction.to_firstname + ' ' + transaction.to_lastname) == loggedhistory.firstname + ' ' + loggedhistory.lastname
+    //     );
+    // });
+    // let userTransactions = hisdata.filter((tranz)=> tranz.from == loggedhistory.firstname+ " " +loggedhistory.lastname) ||(tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname)
+    let userTransactions = hisdata.filter((tranz)=> (tranz.from == loggedhistory.firstname+ " " +loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
+    console.log(userTransactions);
+
+
+    userTransactions.forEach((transaction) => {
+        let amount = transaction.amount.toFixed(2);
+        if (transaction.from  == loggedhistory.firstname + " " + loggedhistory.lastname) {
+          amount = "-" + amount;
+        } else {
+          amount = "+" + amount;
+
+        }
         let transactionHTML = `<div class = "dta">
             <div class="narat">
-                <p>Payment from ${transaction.from}</p>
+            <div>Payment ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? transaction.to : transaction.from}</div>
             </div>
             <div class="prc">
-                <p>NGN ${transaction.amount.toFixed(2)}</p>
+                <div>NGN ${amount}</div>
             </div>
         </div>`;
         history.innerHTML += transactionHTML;
-    });
-} else {
-    console.error("No transaction histroy found");
-}
+      });
+} 
 
 // Go home from generate card
 function goHome() {
