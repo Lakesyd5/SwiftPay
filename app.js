@@ -138,7 +138,7 @@ const copyPin = async () => {
 
 
 
-// Transfer Money (Movin tothe main transfer page)
+// Transfer Money (Moving to the main transfer page)
 function transfer() {
     window.location.href = "moneytransfer.html"
 }
@@ -237,4 +237,29 @@ const copyNum = async () => {
         console.error("Failed to copy:", err);
     }
     window.location.href = "card.html"
+}
+
+// Transaction History
+let history = document.getElementById("thistory");
+let hisdata = JSON.parse(localStorage.getItem("Transhistory"));
+
+if (hisdata) {
+    hisdata.forEach(transaction => {
+        let transactionHTML = `<div class = "dta">
+            <div class="narat">
+                <p>Payment from ${transaction.from}</p>
+            </div>
+            <div class="prc">
+                <p>NGN ${transaction.amount.toFixed(2)}</p>
+            </div>
+        </div>`;
+        history.innerHTML += transactionHTML;
+    });
+} else {
+    console.error("No transaction histroy found");
+}
+
+// Go home from generate card
+function goHome() {
+    window.location.href = "dashboard.html"
 }

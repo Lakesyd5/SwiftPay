@@ -208,4 +208,30 @@
       margin-left: 5px;
    }
 
+   .dta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+   }
+
+   .prc {
+      background-color: green;
+      height: fit-content;
+      width: fit-content;
+      padding: 4px;
+      border-radius: 5px;
+   }
+
+   .narat {
+      font-weight: 600;
+   }
+
+   .thistory {
+      height: 100px;
+      /* background-color: brown; */
+      overflow-y: scroll;
+      padding: 0 5px;
+   }
+   
 }

@@ -50,6 +50,13 @@
         </section>
         <section>
             <div>
+                <p>Transaction Narration</p>
+                <div id="trnarate"></div>
+            </div>
+            <img src="./images/Group 65.png" alt="">
+        </section>
+        <section>
+            <div>
                 <p>Amount to be sent</p>
                 <div id="amtsnt"></div>
             </div>
@@ -69,16 +76,21 @@
     let userBlc = JSON.parse(localStorage.getItem("loggeduser"))
     let receiver = JSON.parse(localStorage.getItem("sendto"));
     let amountValue = JSON.parse(localStorage.getItem("amount"));
+    let histinn = JSON.parse(localStorage.getItem("Transhistory"));
+
+
     let acchow = document.getElementById("renum");
     let accname = document.getElementById("rename");
     let accbank = document.getElementById("rebank");
     let accamn = document.getElementById("amtsnt");
     let shoblc = document.getElementById("showblc");
-    let scrnblc = document.getElementById("blcc")
+    let scrnblc = document.getElementById("blcc");
+    let narate = document.getElementById("trnarate")
 
     acchow.innerText = `${receiver.accountnumber}`;
     accname.innerHTML = `${receiver.firstname} ${receiver.lastname}` 
     accbank.innerHTML = `SWIFTPAY`;
+    narate.innerHTML = `${histinn.narration}`
     accamn.innerHTML = "NGN" + " " + amountValue
     shoblc.innerHTML = `Available Balance: NGN ${userBlc.balance}`
     scrnblc.innerHTML = "Pay NGN" + " " + amountValue 

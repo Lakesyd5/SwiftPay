@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');</style>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body class="wonder">
     <main>
@@ -107,6 +110,9 @@
                 <h3>Transactions History</h3>
                 <button>See All</button>
             </div>
+            <div class="thistory">
+                <div id="thistory"></div>
+            </div>
         </div>
         <!--  -->
     </main>
@@ -128,11 +134,10 @@ window.onload = function () {
     let gotte = JSON.parse(localStorage.getItem("loggeduser"));
     console.log(gotte);
 
-    shon.innerHTML = `<p class="name">Hi, ${gotte.firstname}<p>`
+    shon.innerHTML = `<p class="name animate__animated animate__bounceInDown">Hi, ${gotte.firstname}<p>`
 }
 
 // Print Balance
-
 let bal = document.getElementById("balance");
 let loged = JSON.parse(localStorage.getItem("loggeduser"));
 bal.innerHTML = `NGN ${loged.balance}`

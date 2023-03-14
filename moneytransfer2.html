@@ -32,6 +32,8 @@
             <input type="number" name="" id="howmuch" placeholder="Enter amount">
             <label for="">Enter your transactional pin to complete</label>
             <input type="password" name="" id="tranpin" maxlength="4" minlength="4" placeholder="Your 4-Digit Pin">
+            <label for="">Transaction Narration</label>
+            <input type="text" name="" id="narration" placeholder="Describe the narration">
         </form>
         <button onclick="sendMoney()">Next</button>
     </main>
@@ -53,7 +55,14 @@
 `
     let allTransactions = []
     let amount = document.getElementById("howmuch");
-    let tranpin = document.getElementById("tranpin")
+    let tranpin = document.getElementById("tranpin");
+    let description = document.getElementById("narration")
+
+    // Load transaction history from local storage
+let transhistory = JSON.parse(localStorage.getItem("Transhistory"));
+if (transhistory && transhistory.length > 0) {
+  allTransactions = transhistory;
+}
 
     function sendMoney() {
         let receiver = JSON.parse(localStorage.getItem("sendto"));
@@ -75,7 +84,8 @@
                 from: sender.firstname + " " + sender.lastname,
                 to: receiver.firstname + " " + receiver.lastname,
                 type: "debit",
-                amount: parseFloat(amount.value)
+                amount: parseFloat(amount.value),
+                narration: description.value
             }
 
             allTransactions.push(transactionData);
