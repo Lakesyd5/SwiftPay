@@ -87,10 +87,12 @@
     let scrnblc = document.getElementById("blcc");
     let narate = document.getElementById("trnarate")
 
+    let mostRecentTransaction = histinn[histinn.length - 1]; 
+
     acchow.innerText = `${receiver.accountnumber}`;
     accname.innerHTML = `${receiver.firstname} ${receiver.lastname}` 
     accbank.innerHTML = `SWIFTPAY`;
-    narate.innerHTML = `${histinn.narration}`
+    narate.innerHTML = `${mostRecentTransaction.narration}`
     accamn.innerHTML = "NGN" + " " + amountValue
     shoblc.innerHTML = `Available Balance: NGN ${userBlc.balance}`
     scrnblc.innerHTML = "Pay NGN" + " " + amountValue 

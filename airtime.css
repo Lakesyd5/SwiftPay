@@ -1,0 +1,70 @@
+@media (max-width: 390px) {
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    nav div {
+        font-weight: 900;
+        margin-left: 10px;
+    }
+
+    main {
+        margin: 150px 20px 0 20px;
+    }
+
+    h3 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .holding {
+        display: flex;
+        justify-content: center;
+    }
+
+    .holding button {
+        border: none;
+        background: none;
+        margin-right: 10px;
+
+    }
+
+    .holding .net {
+        font-weight: 700;
+    }
+
+    .airtimeamt {
+        display: flex;
+        margin: auto;
+        margin-top: 30px;
+        /* background-color: green; */
+        /* width: fit-content; */
+        border: 1px solid gray;
+        padding: 10px;
+        border-radius: 5px;
+        justify-content: space-between;
+    }
+
+    .airtimeamt input {
+        border: none;
+        width: 230px;
+        outline: none;
+        font-size: smaller;
+    }
+
+    .airtimeamt button {
+        background-color: rgb(137, 2, 62);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 15px;
+        border: none;
+        font-size: xx-small;
+    }
+
+}    

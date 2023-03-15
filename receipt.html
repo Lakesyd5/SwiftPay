@@ -51,6 +51,13 @@
         </section>
         <section>
             <div>
+                <p>Narration</p>
+                <div id="nar"></div>
+            </div>
+            <img src="./images/Group 65.png" alt="">
+        </section>
+        <section>
+            <div>
                 <p>Amount Sent</p>
                 <div id="amtsnt"></div>
             </div>
@@ -68,14 +75,19 @@
     let userBlc = JSON.parse(localStorage.getItem("loggeduser"))
     let receiver = JSON.parse(localStorage.getItem("sendto"));
     let amountValue = JSON.parse(localStorage.getItem("amount"));
+    let hist = JSON.parse(localStorage.getItem("Transhistory"));
     let acnum = document.getElementById("renum");
     let acnam = document.getElementById("rename");
     let bannam = document.getElementById("rebank");
     let amt = document.getElementById("amtsnt")
+    let desc = document.getElementById("nar")
+
+    let newDesc = hist[hist.length -1]
 
     acnum.innerHTML = `${receiver.accountnumber}`;
     acnam.innerHTML = `${receiver.firstname} ${receiver.lastname}`;
     bannam.innerHTML = `SWIFTPAY`;
+    desc.innerHTML = `${newDesc.narration}`
     amt.innerHTML = "NGN" + " " + amountValue;
 
     function saveRe() {

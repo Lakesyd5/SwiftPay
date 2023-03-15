@@ -7,6 +7,7 @@
 
    main {
     margin: 15px;
+    /* margin-top: 35px; */
    }
 
    nav {
@@ -14,6 +15,7 @@
     align-items: center;
     line-height: 0;
     justify-content: space-between;
+    margin-top: 40px;
    }
 
    nav .user-info {
@@ -233,9 +235,16 @@
 
    .thistory {
       height: 80px;
-      background-color: brown;
       overflow-y: scroll;
       padding: 0 5px;
+   }
+
+   .from {
+      color: red;
+   }
+
+   .to {
+      color: green;
    }
    
 }

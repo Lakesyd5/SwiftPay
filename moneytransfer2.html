@@ -72,6 +72,10 @@ if (transhistory && transhistory.length > 0) {
             console.error("Cannot find accounts in localstorage.");
             return;
         }
+        if (description.value == "") {
+            alert("Please fill the description");
+            return;
+        }
         let senderAccount = mainAccounts.find(account => account.accountnumber == sender.accountnumber);
         let receiverAccount = mainAccounts.find(account => account.accountnumber == receiver.accountnumber)
         if (sender.pin === tranpin.value) {

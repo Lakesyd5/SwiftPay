@@ -158,7 +158,7 @@ function pay() {
     window.location.href = "transactionstatus.html"
 }
 
-// Proile
+// Profile
 let userprofile = JSON.parse(localStorage.getItem("loggeduser"));
 let ustop = document.getElementById("userfirst");
 function inUser() {
@@ -244,7 +244,7 @@ let history = document.getElementById("thistory");
 let hisdata = JSON.parse(localStorage.getItem("Transhistory"));
 let loggedhistory = JSON.parse(localStorage.getItem("loggeduser"))
 
-console.log(hisdata);
+// console.log(hisdata);
 
 if (history && hisdata && loggedhistory) {
     // let userTransactions = hisdata.filter (transaction => {
@@ -255,23 +255,24 @@ if (history && hisdata && loggedhistory) {
     // });
     // let userTransactions = hisdata.filter((tranz)=> tranz.from == loggedhistory.firstname+ " " +loggedhistory.lastname) ||(tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname)
     let userTransactions = hisdata.filter((tranz)=> (tranz.from == loggedhistory.firstname+ " " +loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
-    console.log(userTransactions);
+    // console.log(userTransactions);
 
 
     userTransactions.forEach((transaction) => {
         let amount = transaction.amount.toFixed(2);
         if (transaction.from  == loggedhistory.firstname + " " + loggedhistory.lastname) {
           amount = "-" + amount;
+          amountClass = "from";
         } else {
           amount = "+" + amount;
-
+          amountClass = "to";
         }
         let transactionHTML = `<div class = "dta">
             <div class="narat">
             <div>Payment ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? transaction.to : transaction.from}</div>
             </div>
             <div class="prc">
-                <div>NGN ${amount}</div>
+                <div class="${amountClass}">NGN ${amount}</div>
             </div>
         </div>`;
         history.innerHTML += transactionHTML;
@@ -282,3 +283,61 @@ if (history && hisdata && loggedhistory) {
 function goHome() {
     window.location.href = "dashboard.html"
 }
+
+// History button
+function gohist() {
+    window.location.href = "history.html"
+}
+
+// History page
+let hisContent = document.getElementById("showhist");
+if (hisContent && hisdata && loggedhistory) {
+    let userTransactions = hisdata.filter((tranz)=> (tranz.from == loggedhistory.firstname+ " " +loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
+    // console.log(userTransactions);
+
+
+    userTransactions.forEach((transaction) => {
+        let amount = transaction.amount.toFixed(2);
+        if (transaction.from  == loggedhistory.firstname + " " + loggedhistory.lastname) {
+          amount = "-" + amount;
+          amountClass = "from";
+        } else {
+          amount = "+" + amount;
+          amountClass = "to";
+        }
+        let transactionHTML = `<div class = "daa">
+            <div class="narat">
+            <div>Payment ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? transaction.to : transaction.from}</div>
+            </div>
+            <div class="prc">
+                <div class="${amountClass}"> ${amount}</div>
+            </div>
+        </div>`;
+        hisContent.innerHTML += transactionHTML;
+      });
+};
+
+
+function toDash() {
+    window.location.href = "dashboard.html"
+}
+
+function seeall() {
+    window.location.href = "history.html"
+}
+
+// Airtime Button
+function goAir() {
+    window.location.href = "airtime.html"
+}
+
+// Airtime Page
+const networkOperatorButtons = document.querySelectorAll('.holding button');
+
+// Loop through each button and add a click event listener
+networkOperatorButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const networkOperatorName = button.querySelector('.net').textContent;
+    alert(`You have selected ${networkOperatorName}`);
+  });
+});
