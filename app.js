@@ -222,7 +222,7 @@ function card() {
     //         cardNumber += " "; 
     //     }
     // }
-    
+
 }
 
 // Save Card Number
@@ -254,30 +254,30 @@ if (history && hisdata && loggedhistory) {
     //     );
     // });
     // let userTransactions = hisdata.filter((tranz)=> tranz.from == loggedhistory.firstname+ " " +loggedhistory.lastname) ||(tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname)
-    let userTransactions = hisdata.filter((tranz)=> (tranz.from == loggedhistory.firstname+ " " +loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
+    let userTransactions = hisdata.filter((tranz) => (tranz.from == loggedhistory.firstname + " " + loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
     // console.log(userTransactions);
 
 
     userTransactions.forEach((transaction) => {
         let amount = transaction.amount.toFixed(2);
-        if (transaction.from  == loggedhistory.firstname + " " + loggedhistory.lastname) {
-          amount = "-" + amount;
-          amountClass = "from";
+        if (transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname) {
+            amount = "-" + amount;
+            amountClass = "from";
         } else {
-          amount = "+" + amount;
-          amountClass = "to";
+            amount = "+" + amount;
+            amountClass = "to";
         }
         let transactionHTML = `<div class = "dta">
             <div class="narat">
-            <div>Payment ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? transaction.to : transaction.from}</div>
+            <div>Payment ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
             </div>
             <div class="prc">
                 <div class="${amountClass}">NGN ${amount}</div>
             </div>
         </div>`;
         history.innerHTML += transactionHTML;
-      });
-} 
+    });
+}
 
 // Go home from generate card
 function goHome() {
@@ -292,29 +292,29 @@ function gohist() {
 // History page
 let hisContent = document.getElementById("showhist");
 if (hisContent && hisdata && loggedhistory) {
-    let userTransactions = hisdata.filter((tranz)=> (tranz.from == loggedhistory.firstname+ " " +loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
+    let userTransactions = hisdata.filter((tranz) => (tranz.from == loggedhistory.firstname + " " + loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
     // console.log(userTransactions);
 
 
     userTransactions.forEach((transaction) => {
         let amount = transaction.amount.toFixed(2);
-        if (transaction.from  == loggedhistory.firstname + " " + loggedhistory.lastname) {
-          amount = "-" + amount;
-          amountClass = "from";
+        if (transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname) {
+            amount = "-" + amount;
+            amountClass = "from";
         } else {
-          amount = "+" + amount;
-          amountClass = "to";
+            amount = "+" + amount;
+            amountClass = "to";
         }
         let transactionHTML = `<div class = "daa">
             <div class="narat">
-            <div>Payment ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname+ " " +loggedhistory.lastname ? transaction.to : transaction.from}</div>
+            <div>Payment ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
             </div>
             <div class="prc">
                 <div class="${amountClass}"> ${amount}</div>
             </div>
         </div>`;
         hisContent.innerHTML += transactionHTML;
-      });
+    });
 };
 
 
@@ -326,18 +326,88 @@ function seeall() {
     window.location.href = "history.html"
 }
 
-// Airtime Button
+// Airtime Button(On Dashboard)
 function goAir() {
     window.location.href = "airtime.html"
 }
 
 // Airtime Page
-const networkOperatorButtons = document.querySelectorAll('.holding button');
+let airtimeData = [];
+let user = JSON.parse(localStorage.getItem("loggeduser"));
+let networkOperatorButtons = document.querySelectorAll('.holding button');
+let selectedNetworkOperator;
+let selectedAirtimeAmount;
+let selectedButton;
+
+let transactions = JSON.parse(localStorage.getItem('Transhistory'));
+let mainAccount = JSON.parse(localStorage.getItem('account'));
+
 
 // Loop through each button and add a click event listener
 networkOperatorButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const networkOperatorName = button.querySelector('.net').textContent;
-    alert(`You have selected ${networkOperatorName}`);
-  });
+    button.addEventListener('click', () => {
+        selectedNetworkOperator = button.querySelector('.net').textContent;
+         selectedButton = button
+
+        // Check if both network operator and airtime amount have been selected before pushing to array
+        if (selectedNetworkOperator && selectedAirtimeAmount) {
+            let airtimeImage = selectedButton.querySelector('img').src;
+            let airtime = {
+                image: airtimeImage,
+                airtime: selectedNetworkOperator,
+                amount: selectedAirtimeAmount,
+                boughtBy: `${user.firstname}`,
+            };
+            airtimeData.push(airtime);
+            console.log(airtime);
+            selectedNetworkOperator = null;
+            selectedAirtimeAmount = null;
+            localStorage.setItem('airtimeData', JSON.stringify(airtimeData));
+        }
+
+        alert(`You have selected ${selectedNetworkOperator}`);
+    });
 });
+
+// Top Up Button
+let topUpBtn = document.querySelector('.airtimeamt button');
+if (topUpBtn) {
+    topUpBtn.addEventListener('click', () => {
+        selectedAirtimeAmount = document.querySelector('.airtimeamt input').value;
+        console.log(selectedAirtimeAmount);
+        if (selectedNetworkOperator && selectedAirtimeAmount) {
+            let airtimeImage = selectedButton.querySelector('img').src;
+
+            user.balance -= parseInt(selectedAirtimeAmount);
+
+            let airtime = {
+                image: airtimeImage,
+                airtime: selectedNetworkOperator,
+                amount: selectedAirtimeAmount,
+                boughtBy: `${user.firstname}`,
+            };
+            airtimeData.push(airtime);
+            console.log(airtime);
+            selectedNetworkOperator = null;
+            selectedAirtimeAmount = null;
+            localStorage.setItem('airtimeData', JSON.stringify(airtimeData));
+            localStorage.setItem('loggeduser', JSON.stringify(user));
+            localStorage.setItem('Transhistory', JSON.stringify(transactions))
+            alert('Top-Up successful');
+        }else if (selectedNetworkOperator) {
+            alert ('Please select an airtime amount')
+        } else {
+            alert('Please select a network operator and airtime amount');
+        }
+    });
+};
+
+// Airtime amount input field 
+// let airtimeAmountInput = document.querySelector('.airtimeamt input');
+// if (airtimeAmountInput) {
+//     airtimeAmountInput.addEventListener('click', () => {
+//         if (networkOperatorName) {
+//             updateAirtimeData();
+//         }
+//     });
+// }
