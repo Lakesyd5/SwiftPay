@@ -27,9 +27,9 @@
 
 <script>
     let scp = document.getElementById("pin");
-    let nom = JSON.parse(localStorage.getItem("account"))
+    let nomz = JSON.parse(localStorage.getItem("account"))
 
-    nom.forEach(element => {
+    nomz.forEach(element => {
         scp.innerHTML = `<div class="nom">${element.pin}</div>`
     });
 </script>

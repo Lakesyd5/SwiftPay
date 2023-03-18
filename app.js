@@ -245,6 +245,9 @@ let hisdata = JSON.parse(localStorage.getItem("Transhistory"));
 let loggedhistory = JSON.parse(localStorage.getItem("loggeduser"))
 
 // console.log(hisdata);
+// if (!hisdata && history) {
+//     history.innerHTML = `<h3 class="histno">No Transactions yet</h3>`
+// }
 
 if (history && hisdata && loggedhistory) {
     // let userTransactions = hisdata.filter (transaction => {
@@ -257,26 +260,32 @@ if (history && hisdata && loggedhistory) {
     let userTransactions = hisdata.filter((tranz) => (tranz.from == loggedhistory.firstname + " " + loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
     // console.log(userTransactions);
 
+    if (userTransactions.length === 0) {
+        history.innerHTML = `<h3 class="histno">No transactions yet</h3>`;
+    } else {
 
-    userTransactions.forEach((transaction) => {
-        let amount = transaction.amount.toFixed(2);
-        if (transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname) {
-            amount = "-" + amount;
-            amountClass = "from";
-        } else {
-            amount = "+" + amount;
-            amountClass = "to";
-        }
-        let transactionHTML = `<div class = "dta">
-            <div class="narat">
-            <div>Payment ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
-            </div>
-            <div class="prc">
-                <div class="${amountClass}">NGN ${amount}</div>
-            </div>
-        </div>`;
-        history.innerHTML += transactionHTML;
-    });
+        userTransactions.forEach((transaction) => {
+            let amount = transaction.amount.toFixed(2);
+            if (transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname) {
+                amount = "-" + amount;
+                amountClass = "from";
+            } else {
+                amount = "+" + amount;
+                amountClass = "to";
+            }
+            let transactionHTML = `<div class = "dta">
+                <div class="narat">
+                <div>Payment ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
+                </div>
+                <div class="prc">
+                    <div class="${amountClass}">NGN ${amount}</div>
+                </div>
+            </div>`;
+            history.innerHTML += transactionHTML;
+        });
+
+    }
+
 }
 
 // Go home from generate card
@@ -291,30 +300,40 @@ function gohist() {
 
 // History page
 let hisContent = document.getElementById("showhist");
+
+// if (!hisdata && hisContent) {
+//     hisContent.innerHTML = `<h3 class="histsec">No Transactions yet</h3>`
+// }
+
 if (hisContent && hisdata && loggedhistory) {
     let userTransactions = hisdata.filter((tranz) => (tranz.from == loggedhistory.firstname + " " + loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
     // console.log(userTransactions);
 
+    if (userTransactions.length === 0) {
+        hisContent.innerHTML = `<h3 class="histsec">No transactions yet</h3>`;
+    } else {
 
-    userTransactions.forEach((transaction) => {
-        let amount = transaction.amount.toFixed(2);
-        if (transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname) {
-            amount = "-" + amount;
-            amountClass = "from";
-        } else {
-            amount = "+" + amount;
-            amountClass = "to";
-        }
-        let transactionHTML = `<div class = "daa">
-            <div class="narat">
-            <div>Payment ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
-            </div>
-            <div class="prc">
-                <div class="${amountClass}"> ${amount}</div>
-            </div>
-        </div>`;
-        hisContent.innerHTML += transactionHTML;
-    });
+        userTransactions.forEach((transaction) => {
+            let amount = transaction.amount.toFixed(2);
+            if (transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname) {
+                amount = "-" + amount;
+                amountClass = "from";
+            } else {
+                amount = "+" + amount;
+                amountClass = "to";
+            }
+            let transactionHTML = `<div class = "daa">
+                <div class="narat">
+                <div>Payment ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
+                </div>
+                <div class="prc">
+                    <div class="${amountClass}"> ${amount}</div>
+                </div>
+            </div>`;
+            hisContent.innerHTML += transactionHTML;
+        });
+    }
+
 };
 
 
@@ -347,7 +366,7 @@ let mainAccount = JSON.parse(localStorage.getItem('account'));
 networkOperatorButtons.forEach(button => {
     button.addEventListener('click', () => {
         selectedNetworkOperator = button.querySelector('.net').textContent;
-         selectedButton = button
+        selectedButton = button
 
         // Check if both network operator and airtime amount have been selected before pushing to array
         if (selectedNetworkOperator && selectedAirtimeAmount) {
@@ -357,6 +376,7 @@ networkOperatorButtons.forEach(button => {
                 airtime: selectedNetworkOperator,
                 amount: selectedAirtimeAmount,
                 boughtBy: `${user.firstname}`,
+                transactionType: "airtime"
             };
             airtimeData.push(airtime);
             console.log(airtime);
@@ -372,42 +392,102 @@ networkOperatorButtons.forEach(button => {
 // Top Up Button
 let topUpBtn = document.querySelector('.airtimeamt button');
 if (topUpBtn) {
+
     topUpBtn.addEventListener('click', () => {
         selectedAirtimeAmount = document.querySelector('.airtimeamt input').value;
         console.log(selectedAirtimeAmount);
         if (selectedNetworkOperator && selectedAirtimeAmount) {
             let airtimeImage = selectedButton.querySelector('img').src;
 
-            user.balance -= parseInt(selectedAirtimeAmount);
+            // user.balance -= parseInt(selectedAirtimeAmount);
+            // let userIndex = mainAccount.findIndex(account => account.firstname == user.firstname);
+            // mainAccount[userIndex].balance -= parseInt(selectedAirtimeAmount);
 
             let airtime = {
                 image: airtimeImage,
                 airtime: selectedNetworkOperator,
                 amount: selectedAirtimeAmount,
                 boughtBy: `${user.firstname}`,
+                transactionType: "airtime"
             };
             airtimeData.push(airtime);
+            transactions.push(airtime);
             console.log(airtime);
             selectedNetworkOperator = null;
             selectedAirtimeAmount = null;
+
             localStorage.setItem('airtimeData', JSON.stringify(airtimeData));
             localStorage.setItem('loggeduser', JSON.stringify(user));
-            localStorage.setItem('Transhistory', JSON.stringify(transactions))
+            localStorage.setItem('Transhistory', JSON.stringify(transactions));
+            localStorage.setItem('account', JSON.stringify(mainAccount))
             alert('Top-Up successful');
-        }else if (selectedNetworkOperator) {
-            alert ('Please select an airtime amount')
+            window.location.href = "airtime2.html"
+        } else if (selectedNetworkOperator) {
+            alert('Please select an airtime amount')
         } else {
             alert('Please select a network operator and airtime amount');
         }
     });
 };
 
-// Airtime amount input field 
-// let airtimeAmountInput = document.querySelector('.airtimeamt input');
-// if (airtimeAmountInput) {
-//     airtimeAmountInput.addEventListener('click', () => {
-//         if (networkOperatorName) {
-//             updateAirtimeData();
-//         }
-//     });
-// }
+// Buy Airtime Button
+let buyAirtimeBtn = document.getElementById('makepay');
+let airtimescrn = document.querySelector('.airscreen');
+let airdat = JSON.parse(localStorage.getItem('airtimeData'));
+let airPin = document.getElementById('airpin');
+let selectAirtime = airdat[airdat.length - 1].amount;
+
+if (airtimescrn) {
+    airdat.forEach(element => {
+        airtimescrn.innerHTML += `<div class="ine">
+        <img src="${element.image}" alt="">
+    <p>You are about to top up with</p>
+    <div class="price">NGN ${element.amount}<div>
+    </div>`
+    });
+}
+
+if (buyAirtimeBtn) {
+
+    buyAirtimeBtn.addEventListener('click', () => {
+        if (airPin.value == user.pin) {
+            user.balance -= parseFloat(selectAirtime);
+            let userIndex = mainAccount.findIndex(account => account.firstname == user.firstname);
+            mainAccount[userIndex].balance -= parseFloat(selectAirtime);
+            console.log(mainAccount);
+            console.log(selectedAirtimeAmount);
+
+            alert("Recharge successful");
+            // window.location.href = "airtimestatus.html";
+
+            localStorage.setItem('loggeduser', JSON.stringify(user));
+            localStorage.setItem('account', JSON.stringify(mainAccount));
+        } else {
+            alert("Invalid PIN")
+        }
+    })
+}
+
+
+// Airtime Status
+
+let stat = document.getElementById("success");
+let sucData = JSON.parse(localStorage.getItem('airtimeData'))
+
+if (stat) {
+    sucData.forEach(element => {
+        stat.innerHTML += `<div class="succ">
+    <img src="./images/Group 82.png" alt="">
+        <h3>Recharge Successful</h3>
+        <div>You bought <b>${element.airtime}</b> worth <b>NGN ${element.amount}</b> </div>
+    </div>`
+    });
+}
+
+// Done Button (Airtime Status Page)
+let doneBtn = document.getElementById("done");
+if (doneBtn) {
+    doneBtn.addEventListener('click', () => {
+        window.location.href = "dashboard.html"
+    });
+}

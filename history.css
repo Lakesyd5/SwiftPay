@@ -28,6 +28,15 @@
         font-weight: 700;
     }
 
+    .histsec {
+        display: flex;
+        margin:  80% auto;
+        /* margin-top: 40px; */
+        width: fit-content;
+        font-weight: 900;
+        color: grey;
+     }
+
     .to {
         color: green;
     }

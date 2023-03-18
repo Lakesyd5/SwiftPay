@@ -239,6 +239,15 @@
       padding: 0 5px;
    }
 
+   .histno {
+      display: flex;
+      margin: auto;
+      margin-top: 40px;
+      width: fit-content;
+      font-weight: 900;
+      color: grey;
+   }
+
    .from {
       color: red;
    }
