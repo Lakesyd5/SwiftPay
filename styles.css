@@ -1,27 +1,455 @@
-@media (max-width: 390px) {
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap');
-    body{
-        background-color: rgb(137, 2, 62);
+* {
+    font-family: 'Poppins', sans-serif; 
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 50px;
+}
+
+nav img {
+    width: 100px;
+}
+
+nav .material-symbols-outlined {
+    display: none;
+}
+
+.feature-holder {
+    margin-left: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.feature-holder button {
+    border: none;
+    padding: 5px 10px;
+    font-weight: 600;
+    /* background-color: green; */
+    background: none;
+    border-radius: 5px;
+    margin-right: 40px;
+}
+
+.feature-holder button:hover {
+    background-color: rgb(230, 225, 225);
+}
+
+/* .essential-holder {
+
+} */
+
+.essential-holder .sign {
+    color: white;
+    background-color: rgb(137, 2, 62);
+    border: none;
+    margin-right: 20px;
+    padding: 5px 15px;
+}
+
+.essential-holder .log {
+    border: none;
+    background-color: lightgray;
+    padding: 5px 15px;
+    font-weight: 600;
+}
+
+.first-content {
+    margin: 30px 50px;
+}
+
+.first-content h1 {
+    /* display: flex; */
+    margin: auto;
+    margin-top: 110px;
+    width: 500px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900px;
+    text-align: center;
+}
+
+.first-content h1 span {
+    color: rgb(137,2,62);
+    font-family: 'Playfair Display', serif;
+    /* display: flex; */
+}
+
+.first-content .enjoy {
+    width: 510px;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.learn-get {
+    width: fit-content;
+    display: flex;
+    margin: auto;
+    margin-top: 70px;
+}
+
+.learn {
+    color: white;
+    background-color: rgb(137, 2, 62);
+    border: none;
+    padding: 10px 35px;
+    margin-right: 20px;
+    font-weight: 700;
+}
+
+.get {
+    background-color: white;
+    padding: 10px 35px;
+    font-weight: 700;
+    border: 1px solid;
+}
+
+.second-content {
+    margin: 80px 50px;   
+}
+
+.second-content .companies {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+}
+
+.second-content .companies span {
+    font-weight: 900;
+    margin: 0 5px;
+}
+
+.name-companies {
+    display: flex;
+    margin: auto;
+    width: fit-content;
+    margin-top: 20px;
+}
+
+.name-companies img {
+    margin-right: 25px;
+}
+
+.third-content {
+    margin: 140px 50px;    
+}
+
+.third-content-inner {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+}
+
+.third-content-left {
+    margin-right: 100px;
+}
+
+.third-content-left h1 {
+    width: 400px;
+    font-family: 'Playfair Display', serif;
+}
+
+.third-content-left img {
+    width: 360px;
+}
+
+.third-content-right {
+    display: flex;
+    flex-wrap: wrap;
+    width: 650px;
+}
+
+.third-content-right div {
+    margin-right: 40px;
+    margin-bottom: 30px; 
+    width: fit-content;
+}
+
+.third-content-right img {
+width: 40px;
+}
+
+.third-content-right h3 {
+    margin: 0;
+}
+
+.third-content-right p {
+    margin: 0;
+    width: 280px;
+}
+
+.fourth-content {
+    margin: 140px 50px;
+}
+
+.fourth-inner {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+}
+
+.fourth-inner-left {
+    margin-right: 90px;
+}
+
+.fourth-inner-left:hover {
+    transform: translate(10px, 30px);
+    box-shadow: 3px 8px 8px grey;
+    border-radius: 5px;
+    padding: 20px;
+    transition: .25s ease-in-out;
+}
+
+.fourth-inner h1 {
+    font-family: 'Playfair Display', serif;
+    width: 300px;
+}
+
+.fourth-inner p {
+    width: 475px;
+    color: rgb(73, 69, 69);
+}
+
+.fourth-inner button {
+    border: none;
+    color: white;
+    background-color: rgb(137, 2, 62);
+    padding: 12px 55px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.fifth-content {
+    margin: 170px 50px;
+}
+
+.fifth-content h1 {
+    font-family: 'Playfair Display', serif;
+    width: 400px;
+    text-align: center;
+    /* width: fit-content; */
+    display: flex;
+    margin: auto;
+}
+
+.fifth-content .topper {
+    font-size: small;
+    width: 450px;
+    text-align: center;
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    color: rgb(73, 69, 69);
+}
+
+.fifth-content .hold {
+    display: flex;
+    margin: auto;
+    width: fit-content;
+    margin-top: 40px;
+    /* justify-content: space-between; */
+}
+
+.hold .save-time-left {
+    background-color: whitesmoke;
+    padding: 40px;
+    border-radius: 8px;
+    margin-right: 25px;
+}
+
+.hold .save-time-left:hover {
+    border-radius: 0 30px 0 30px;
+    background-color: rgb(158, 153, 153);
+    transition: .2s ease;
+    
+}
+
+.hold .save-time-right:hover {
+    border-radius: 0 30px 0 30px;
+    background-color: rgb(158, 153, 153);
+    transition: .2s ease;
+}
+
+.hold .save-time-left span {
+    color: rgb(137,2,62);
+    font-family: 'Playfair Display', serif;
+}
+
+.hold .save-time-right span {
+    color: rgb(137,2,62);
+    font-family: 'Playfair Display', serif;
+}
+
+
+.hold .save-time-right {
+    background-color: whitesmoke;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.hold .save-time-left h3 {
+    width: 270px;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+}
+
+.hold .save-time-right h3 {
+    width: 270px;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+}
+
+.hold .save-time-left p {
+    width: 400px;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.hold .save-time-right p {
+    width: 350px;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.save-time-bottom {
+    display: flex;
+    background-color: whitesmoke;
+    width: fit-content;
+    margin: auto;
+    padding: 30px 130px;
+    margin-top: 25px;
+    border-radius: 8px;
+}
+
+.save-time-bottom:hover {
+    background-color: rgba(135, 54, 54, 0.49);
+}
+
+.save-time-bottom h3 {
+    width: 250px;
+    font-family: 'Playfair Display', serif;
+    margin-right: 90px;
+}
+
+.save-time-bottom p{
+    width: 330px;
+}
+
+.save-time-bottom span {
+    color: rgb(137,2,62);
+    font-family: 'Playfair Display', serif;
+}
+
+.sixth-content {
+    background-color: rgb(137,2,62);
+    color: white;
+    padding: 20px 70px;
+}
+
+.sixth-content h1 {
+    width: 650px;
+    font-family: 'Playfair Display', serif;
+}
+
+.seventh-content {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 150px;
+    
+}
+
+.seventh-left {
+    margin-right: 50px;
+}
+
+.seventh-left h1 {
+    width: 400px;
+    font-family: 'Playfair Display', serif;
+}
+
+.seventh-left p {
+    width: 500px;
+}
+
+.seventh-left button {
+    color: white;
+    background-color: rgb(137, 2, 62);
+    border: none;
+    padding: 10px 40px;
+    margin-top: 50px;
+}
+
+footer {
+    display: flex;
+    justify-content: end;
+    margin-top: 250px;
+    /* background-color: green; */
+    /* width: fit-content; */
+    /* text-align: end; */
+}
+
+footer img {
+    width: 70px;
+    padding-right: 0;
+    /* display: flex;
+    justify-content: end; */
+}
+
+footer p {
+    font-size: small;
+    margin: 0;
+}
+
+
+@media (max-width: 903px) {
+    .feature-holder {
+        display: none;
     }
 
-    div {
-        margin-top: 350px;
-
+    .essential-holder {
+        display: none;
     }
-    div img {
-        color: white;
-        height: 55px;
-        width: 150px;
+
+    nav {
+        margin: 15px 15px;
+    }
+
+    nav img {
+        width: 50px;
+    }
+
+    nav .material-symbols-outlined {
         display: block;
-        margin: auto;
+        margin-right: 462git px;
+    }
+    
+    .first-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 15px 15px;
+        width: 900px;
     }
 
-    div  p {
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Poppins', sans-serif;
-        margin-top: 5px;
+    .first-content h1 {
+        font-size: x-large;
+        width: 400px;
+        margin-left: 0;
+        margin-top: 13px;
+        /* display: flex; */
+        /* justify-content: center; */
+    }
+
+    .first-content .enjoy {
+        /* display: flex; */
+        
     }
 }

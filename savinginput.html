@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings</title>
+    <link rel="stylesheet" href="savinginput.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+    <nav>
+        <span onclick="goback()" class="material-symbols-outlined">
+            arrow_back
+        </span>
+        <div>Savings</div>
+    </nav>
+    <!--  -->
+
+    <!-- Main Contents -->
+    <main>
+        <div class="header">Deposit any amount you would like to save</div>
+        <div class="des">Save any amount and get an interest of 15% within 6 months</div>
+        <div class="all-in">
+            <input type="number" name="" id="saveamount" placeholder="Enter how much you want to save">
+            <input type="number" name="saveaccount" id="" placeholder="Enter Bank Acount" maxlength="9" minlength="9">
+            <input type="number" name="" id="savepin" placeholder="Enter Transactional Pin" maxlength="4" minlength="4">
+        </div>
+        <button id="pro">Proceed</button>
+    </main>
+    <!--  -->
+</body>
+</html>
+<script src="app.js"></script>
+
+<script>
+    function goback() {
+        window.location.href = "dashboard.html"
+    }
+</script>
