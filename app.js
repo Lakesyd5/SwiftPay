@@ -250,15 +250,12 @@ let loggedhistory = JSON.parse(localStorage.getItem("loggeduser"))
 // }
 
 if (history && hisdata && loggedhistory) {
-    // let userTransactions = hisdata.filter (transaction => {
-    //     return (
-    //         (transaction.from_firstname + ' ' + transaction.from_lastname) == loggedhistory.firstname + ' ' + loggedhistory.lastname ||
-    //         (transaction.to_firstname + ' ' + transaction.to_lastname) == loggedhistory.firstname + ' ' + loggedhistory.lastname
-    //     );
-    // });
-    // let userTransactions = hisdata.filter((tranz)=> tranz.from == loggedhistory.firstname+ " " +loggedhistory.lastname) ||(tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname)
-    let userTransactions = hisdata.filter((tranz) => (tranz.from == loggedhistory.firstname + " " + loggedhistory.lastname) || (tranz.to == loggedhistory.firstname + ' ' + loggedhistory.lastname))
-    // console.log(userTransactions);
+    let userTransactions = hisdata.filter((tranz) => {
+        return (tranz.from === loggedhistory.firstname + " " + loggedhistory.lastname) ||
+            (tranz.to === loggedhistory.firstname + ' ' + loggedhistory.lastname) ||
+            (tranz.type === "airtime" && tranz.description.includes("airtime"));
+    });
+
 
     if (userTransactions.length === 0) {
         history.innerHTML = `<h3 class="histno">No transactions yet</h3>`;
@@ -266,6 +263,7 @@ if (history && hisdata && loggedhistory) {
 
         userTransactions.forEach((transaction) => {
             let amount = transaction.amount.toFixed(2);
+            let isAirtime = transaction.type === "airtime" && transaction.description.includes("airtime");
             if (transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname) {
                 amount = "-" + amount;
                 amountClass = "from";
@@ -275,7 +273,7 @@ if (history && hisdata && loggedhistory) {
             }
             let transactionHTML = `<div class = "dta">
                 <div class="narat">
-                <div>Payment ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
+                    <div>${isAirtime ? 'Airtime' : 'Payment'} ${transaction.from === loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from === loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
                 </div>
                 <div class="prc">
                     <div class="${amountClass}">NGN ${amount}</div>
@@ -283,7 +281,6 @@ if (history && hisdata && loggedhistory) {
             </div>`;
             history.innerHTML += transactionHTML;
         });
-
     }
 
 }
@@ -376,7 +373,8 @@ networkOperatorButtons.forEach(button => {
                 airtime: selectedNetworkOperator,
                 amount: selectedAirtimeAmount,
                 boughtBy: `${user.firstname}`,
-                transactionType: "airtime"
+                transactionType: "debit",
+                transactionDescription: "airtime"
             };
             airtimeData.push(airtime);
             console.log(airtime);
@@ -408,7 +406,8 @@ if (topUpBtn) {
                 airtime: selectedNetworkOperator,
                 amount: selectedAirtimeAmount,
                 boughtBy: `${user.firstname}`,
-                transactionType: "airtime"
+                transactionType: "debit",
+                transactionDescription: "airtime"
             };
             airtimeData.push(airtime);
             transactions.push(airtime);
@@ -435,7 +434,7 @@ let buyAirtimeBtn = document.getElementById('makepay');
 let airtimescrn = document.querySelector('.airscreen');
 let airdat = JSON.parse(localStorage.getItem('airtimeData'));
 let airPin = document.getElementById('airpin');
-let selectAirtime = airdat[airdat.length - 1].amount;
+
 
 if (airtimescrn) {
     airdat.forEach(element => {
@@ -450,6 +449,7 @@ if (airtimescrn) {
 if (buyAirtimeBtn) {
 
     buyAirtimeBtn.addEventListener('click', () => {
+        let selectAirtime = airdat[airdat.length - 1].amount;
         if (airPin.value == user.pin) {
             user.balance -= parseFloat(selectAirtime);
             let userIndex = mainAccount.findIndex(account => account.firstname == user.firstname);
@@ -458,7 +458,7 @@ if (buyAirtimeBtn) {
             console.log(selectedAirtimeAmount);
 
             alert("Recharge successful");
-            // window.location.href = "airtimestatus.html";
+            window.location.href = "airtimestatus.html";
 
             localStorage.setItem('loggeduser', JSON.stringify(user));
             localStorage.setItem('account', JSON.stringify(mainAccount));
@@ -484,10 +484,108 @@ if (stat) {
     });
 }
 
+let prooBtn = document.getElementById('pro');
+if (prooBtn) {
+    prooBtn.addEventListener('click', () => {
+        window.location.href = "savinginput2.html"
+    })
+}
+
 // Done Button (Airtime Status Page)
 let doneBtn = document.getElementById("done");
 if (doneBtn) {
     doneBtn.addEventListener('click', () => {
         window.location.href = "dashboard.html"
     });
+}
+
+// Savings
+let proBtn = document.getElementById("procee");
+
+if (proBtn) {
+    proBtn.addEventListener('click', () => {
+        window.location.href = "savinginput.html"
+    });
+}
+
+
+let areYou = document.getElementById('areyou');
+
+if (areYou) {
+    areYou.innerHTML = `<div class="are">
+        <div class="depo">Are you sure you want to deposit </div>
+        <div class="want">You won't be able to withdraw this until after 6 months</div>
+    </div>`
+}
+
+// savings button on dashboard
+let savingsBtn = document.getElementById('save');
+
+if (savingsBtn) {
+    savingsBtn.addEventListener('click', () =>{
+        window.location.href = "onboardingsaving.html"
+    })
+}
+
+// Get App Button on Landing page
+let getAppBtn = document.getElementById('get');
+
+if (getAppBtn) {
+   getAppBtn.addEventListener('click', () => {
+    window.location.href = "start.html"
+   }) 
+}
+
+
+// Generate Virtual Card
+let virtual = []
+
+let cardNameInput = document.getElementById('cardfull');
+let cardAcc = document.getElementById('cardacc');
+let cardGenerateBtn = document.getElementById('card')
+
+function generateCardNumber() {
+    let cardNumber = '';
+    for (let i = 0; i < 16; i++) {
+      cardNumber += Math.floor(Math.random() * 10);
+      if (i % 4 === 3 && i !== 15) {
+        cardNumber += ' '; // add spaces every 4 digits for readability
+      }
+    }
+    return cardNumber;
+  }
+
+if (cardGenerateBtn) {
+    
+    cardGenerateBtn.addEventListener('click', () =>{
+        let cardNumber = generateCardNumber();
+        let cardinfo = {
+            cardnum: cardNumber,
+            name: cardNameInput.value,
+            acc: cardAcc.value
+        };
+        virtual.push(cardinfo);
+        localStorage.setItem('virtual', JSON.stringify(virtual))
+        console.log(virtual);
+
+        window.location.href = "cardloading.html"
+    });
+    
+}
+
+let displayCard = document.getElementById('cardnum');
+let allcardIn = JSON.parse(localStorage.getItem('virtual'))
+
+if (displayCard) {
+    allcardIn.forEach(element => {
+        displayCard.innerHTML = element.cardnum
+    });
+}
+
+let shh = document.getElementById('shh');
+
+if (shh) {
+    allcardIn.forEach(element => {
+        shh.innerHTML = element.cardnum
+    } )
 }
