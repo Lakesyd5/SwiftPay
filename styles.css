@@ -198,13 +198,13 @@ width: 40px;
     margin-right: 90px;
 }
 
-.fourth-inner-left:hover {
+/* .fourth-inner-left:hover {
     transform: translate(10px, 30px);
     box-shadow: 3px 8px 8px grey;
     border-radius: 5px;
     padding: 20px;
     transition: .25s ease-in-out;
-}
+} */
 
 .fourth-inner h1 {
     font-family: 'Playfair Display', serif;
@@ -410,6 +410,11 @@ footer p {
 
 
 @media (max-width: 903px) {
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
     .feature-holder {
         display: none;
     }
@@ -428,7 +433,7 @@ footer p {
 
     nav .material-symbols-outlined {
         display: block;
-        margin-right: 462git px;
+        margin-right: 458px;
     }
     
     .first-content {
@@ -436,7 +441,7 @@ footer p {
         flex-wrap: wrap;
         justify-content: center;
         margin: 15px 15px;
-        width: 900px;
+        width: 400px;
     }
 
     .first-content h1 {
@@ -449,7 +454,167 @@ footer p {
     }
 
     .first-content .enjoy {
-        /* display: flex; */
+        font-size: small;
+        width: 300px;
+    }
+
+    .learn-get {
+        display: block;
+        width: 210px;
+    }
+
+    .learn {
+        display: flex;
+        margin: auto;
+        padding: 9px 52px;
+    }
+
+    .get {
+        display: flex;
+        margin: auto;
+        margin-top: 20px;
+        padding: 9px 50px;
+    }
+
+    .second-content {
+        width: 400px;
+        margin: 25px 15px;
+    }
+
+    .second-content .companies {
+        display: flex;
+        align-items: center;
+        /* width: 300px; */
+        font-size: small;
+    }
+
+    .name-companies {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .name-companies img {
+        width: 42px;
+        height: 18px;
+        margin: 0 10px
+    }
+
+    .third-content {
+        margin: 25px 15px;
+        width: fit-content;
+    }
+
+    .third-content-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* width: fit-content; */
+        width: 400px;
+        padding: 0;
+        margin: 0;
+        margin-top: 100px;
+        /* margin: 15px 15px; */
+    }
+
+    .third-content-left {
+        margin: 0;
+    }
+
+    .third-content-left h1 {
+        font-size: x-large;
+        width: 280px;
+        text-align: center;
+        margin: auto;
+        margin-bottom: 35px;
+    }
+
+    .third-content-right {
+        width: 360px;
+        display: flex;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .third-content-right img {
+        width: 28px;
+    }
+    
+    .third-content-right p {
+        font-size: small;
+        width: 250px;
+    }
+
+    .fourth-content {
+        background-color: whitesmoke;
+        width: 460px;   
+        margin: 0;
+        /* width: fit-content; */
+    }
+
+    .fourth-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 400px;
+        margin: auto;
+    }
+
+    .fourth-inner-left {
+        display: block;
+        margin: auto;
+        width: fit-content;
+    }
+
+    .fourth-inner-left img {
+        width: 300px;
+    }
+
+    .fourth-inner-right {
+        display: block;
+        margin: auto;
+        width: fit-content;
+    }
+
+    .fourth-inner-right h1 {
+        font-size: x-large;
+        width: 250px;
+    }
+
+    .fourth-inner-right p {
+        font-size: smaller;
+        width: 280px;
+        margin-top: 25px;
+    }
+
+    .fourth-inner-right button {
+        padding: 8px 45px;
+        margin-bottom: 40px;
+    }
+
+    .fifth-content {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: red;
+        width: 400px;
+        justify-content: center;
+        /* margin: auto; */
+        margin: 0;
+    }
+
+    .fifth-content h1 {
+        font-size: x-large;
+        width: 300px;
+        display: flex;
+        margin: auto;
+        background-color: green;
+    }
+    .first-content .hold {
+        width: 400px;
+    }
+
+    .fifth-content .hold .save-time-left {
         
     }
 }
