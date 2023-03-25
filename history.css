@@ -47,3 +47,51 @@
 
 
 }    
+
+@media (max-width: 428px) {
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    nav div {
+        font-weight: 900;
+        margin-left: 10px;
+    }
+
+    main {
+        margin: 20px 20px 0 20px;
+    }
+
+    .daa {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        background-color: rgba(245, 245, 245, 0.679);
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: 700;
+    }
+
+    .histsec {
+        display: flex;
+        margin:  80% auto;
+        /* margin-top: 40px; */
+        width: fit-content;
+        font-weight: 900;
+        color: grey;
+     }
+
+    .to {
+        color: green;
+    }
+
+    .from {
+        color: red;
+    }
+}

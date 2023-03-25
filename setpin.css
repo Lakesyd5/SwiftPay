@@ -58,3 +58,63 @@
         margin-top: 15px;
     }
 }
+
+@media (max-width: 428px) {
+    *{
+        font-family: 'Poppins', sans-serif;
+    }
+
+    img {
+        width: 110px;
+        display: flex;
+        margin: auto;
+        margin-top: 60px;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        font-weight: 900;
+        color: black;
+        margin: 0;
+        margin-top: 140px;
+    }
+
+    .section {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    input {
+        width: 75%;
+        border-radius: 5px;
+        border: 1px solid grey;
+        padding: 13px;
+        margin-top: 9px;
+    }
+
+    button {
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        margin-top: 150px;
+        background-color: rgb(137, 2, 62);
+        border: none;
+        border-radius: 5px;
+        font-size: smaller;
+        color: white;
+        width: 65%;
+        padding: 10px 0;
+    }
+
+    p {
+        display: flex;
+        font-weight: 700;
+        font-size: smaller;
+        width: 300px;
+        margin: auto;
+        text-align: center;
+        margin-top: 15px;
+    }
+}

@@ -155,3 +155,161 @@
         font-weight: 900;
     }
 }
+
+@media (max-width: 428px) {
+    * {
+        font-family: 'Poppins', sans-serif; 
+    }
+
+    .body {
+        background-color: whitesmoke;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    nav div {
+        font-weight: 900;
+        margin-left: 10px;
+    }
+
+    main {
+        margin: 0 20px;
+        margin-top: 40px;
+    }
+
+    .first {
+        width: 100%;
+        background-color: white;
+        padding: 25px 6px;
+        border-radius: 10px;
+    }
+
+    .propic img {
+        height: 80px;
+        width: 80px;
+        border-radius: 100%;
+        display: flex;
+        margin: auto;
+    }
+
+    .userfirst {
+        display: flex;
+        justify-content: center;
+        /* font-size: small; */
+        font-weight: 600;
+    }
+
+    .username {
+        display: flex;
+        justify-content: center;
+        font-size: smaller;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+    .title {
+        font-size: 13px;
+        /* font-weight: 600; */
+    }
+
+    .acnumber {
+        display: flex;
+        justify-content: center;
+        font-weight: 800;
+        font-size: larger;
+    }
+
+    .acpin {
+        display: flex;
+        justify-content: center;
+        font-weight: 800;
+        font-size: larger;
+    }
+
+    .second {
+        width: 100%;
+        background-color: white;
+        padding: 15px 6px;
+        border-radius: 10px;
+        margin-top: 30px;
+    }
+
+    section {
+        display: flex;
+        align-items: center;
+        margin: 12px 12px;
+        justify-content: space-between;
+    }
+
+    section .label {
+        font-size: small;
+    }
+
+    section .fist {
+        font-weight: 600;
+        font-size: small;
+    }
+
+    section .full {
+        font-weight: 600;
+        font-size: small;
+    }
+
+    section .email {
+        font-weight: 600;
+        font-size: small;
+    }
+
+    .third {
+        width: 100%;
+        background-color: white;
+        padding: 15px 6px;
+        border-radius: 10px;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    .third .header {
+        font-weight: 900;
+        width: fit-content;
+    }
+
+    .third .mid {
+        font-size: x-small;
+        width: fit-content;
+    }
+
+    .fourth {
+        width: 100%;
+        background-color: white;
+        padding: 15px 6px;
+        border-radius: 10px;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    .fourth .holder {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .fourth .holder img {
+        margin-right: 10px;
+    }
+
+    .holder .header {
+        font-weight: 900;
+    }
+}

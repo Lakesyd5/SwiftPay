@@ -257,3 +257,257 @@
    }
    
 }
+
+@media (max-width: 428px) {
+   .wonder {
+      background-color: whitesmoke;
+      color: black;
+      font-family: 'Poppins', sans-serif;
+     } 
+  
+     main {
+      margin: 15px;
+      /* margin-top: 35px; */
+     }
+  
+     nav {
+      display: flex;
+      align-items: center;
+      line-height: 0;
+      justify-content: space-between;
+      margin-top: 55px;
+     }
+  
+     nav .user-info {
+      display: flex;
+      align-items: center;
+     }
+  
+     .user-info img {
+      width: 45px; 
+      height: 45px;
+      border-radius: 100%;
+     }
+  
+     nav .user-name h3 {
+      font-weight: 400;
+     }
+  
+    .bell {
+      background: none;
+      border: none;
+      /* font-size: 20px; */
+     }
+     .bell img {
+      width: 24px;
+      height: 24px;
+     }
+  
+     .bar {
+      background: none;
+      border: none;
+      margin-left: 8px;
+     }
+  
+     .bar img {
+      width: 24px;
+      height: 24px;
+     }
+  
+     .balance {
+      position: relative;
+      display: flex;
+      width: 97%;
+      height: 120px;
+      background-color: rgb(137, 2, 62);
+      border-radius: 8px;
+      line-height:0;
+      margin: auto;
+      margin-top: 20px;
+     }
+  
+     .blc  {
+      position: absolute;
+      top: 25%;
+      left: 10%;
+      display: block;
+     }
+  
+     .balance p {
+      font-size: smaller;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      color: white;
+      margin: 0;
+     }
+  
+     .blc h3 {
+      margin-top: 15px;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      font-weight: bolder;
+      font-size: 25px;
+     }
+  
+     .balance button {
+      position: absolute;
+      height: fit-content;
+      top: 37%;
+      left: 65%;
+      padding: 15px 30px;
+      border-radius: 3px;
+      border: none;
+      font-weight: 700; 
+     }
+  
+     .other-label {
+      font-size: medium;
+      margin-top: 18px;
+      font-weight: 900;
+     }
+  
+     .quick-actions {
+      position: relative;
+      display: flex;
+      margin: auto;
+      width: 92%;
+      height: 85px;
+      background-color: white;
+      border-radius: 8px;
+      margin-top: 12px;
+      box-shadow: 3px 3px 8px grey;
+     }
+  
+     .quick-actions button {
+      background: none;
+      border: none;
+      height: fit-content;
+      padding: 5px;
+      margin: auto;
+      border-radius: 5px;
+     }
+   
+     .quick-actions button img {
+      height: 30px;
+      width: 30px;
+     }
+  
+     .quick-actions button p {
+      margin: 0;
+      margin-top: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: smaller;
+     }
+  
+     .other-actions {
+      position: relative;
+      display: flex;
+      margin: auto;
+      width: 92%;
+      height: fit-content;
+      background-color: white;
+      border-radius: 8px;
+      margin-top: 12px;
+      padding: 12px;
+      box-shadow: 3px 3px 8px grey;
+     }
+  
+     .other-actions button {
+      background: none;
+      border: none;
+      height: fit-content;
+      padding: 5px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      margin-top: 18px;
+     }
+  
+     .other-actions button img {
+      height: 30px;
+      width: 30px;
+     }
+  
+     .other-actions button p {
+      margin: 0;
+      margin-top: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: smaller;
+      width: 70px;
+     }
+  
+     .history {
+        margin-top: 30px;
+     }
+  
+     .hit {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+     }
+  
+     .hit h3 {
+        font-weight: 900;
+     }
+  
+     .hit button {
+        border: none;
+        border-radius: 5px;
+        font-weight: 700;
+        background-color: rgb(137, 2, 62);
+        color: white;
+        padding: 5px 15px;
+     }
+  
+     .name {
+        font-weight: 900;
+        margin-left: 5px;
+     }
+  
+     .dta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+     }
+  
+     .prc {
+        background-color: lightgrey;
+        height: fit-content;
+        width: fit-content;
+        padding: 4px;
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: small;
+     }
+  
+     .narat {
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+     }
+  
+     .thistory {
+        height: 80px;
+        overflow-y: scroll;
+        padding: 0 5px;
+     }
+  
+     .histno {
+        display: flex;
+        margin: auto;
+        margin-top: 40px;
+        width: fit-content;
+        font-weight: 900;
+        color: grey;
+     }
+  
+     .from {
+        color: red;
+     }
+  
+     .to {
+        color: green;
+     }
+}
