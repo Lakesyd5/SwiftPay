@@ -589,3 +589,17 @@ if (shh) {
         shh.innerHTML = element.cardnum
     } )
 }
+
+// show & hide balance
+function togglePassword() {
+    let balance = document.querySelector(".blancs");
+    let icon = document.getElementById("icon");
+
+    if (balance.style.visibility === "hidden" ) {
+        balance.style.visibility = "visible"
+        icon.innerText = "visibility"
+    } else {
+        balance.style.visibility = "hidden"
+        icon.innerText = "visibility_off"
+    }
+}

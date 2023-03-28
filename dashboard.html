@@ -13,6 +13,7 @@
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body class="wonder">
     <main>
@@ -37,8 +38,11 @@
             <div class="blc">
                 <p>Your Balance</p>
                 <h3 id="balance"></h3>
+                
             </div>
-            <button>Fund</button>
+            <span onclick="togglePassword()" class="material-symbols-outlined" id="icon">
+                visibility
+                </span>
         </div>
         <!--  -->
 
@@ -140,6 +144,6 @@ window.onload = function () {
 // Print Balance
 let bal = document.getElementById("balance");
 let loged = JSON.parse(localStorage.getItem("loggeduser"));
-bal.innerHTML = `NGN ${loged.balance}`
+bal.innerHTML = `NGN <div class="blancs">${loged.balance}</div>`
 
 </script>

@@ -88,17 +88,19 @@
     color: white;
     font-weight: bolder;
     font-size: 25px;
+    display: flex;
    }
 
-   .balance button {
+   .balance span {
     position: absolute;
     height: fit-content;
-    top: 37%;
-    left: 65%;
-    padding: 15px 30px;
-    border-radius: 3px;
-    border: none;
-    font-weight: 700; 
+    top: 39%;
+    left: 52%;
+    color: white; 
+   }
+
+   .blancs {
+      margin-left: 10px;
    }
 
    .other-label {
@@ -142,16 +144,17 @@
    }
 
    .other-actions {
-    position: relative;
-    display: flex;
-    margin: auto;
-    height: fit-content;
-    background-color: white;
-    border-radius: 8px;
-    margin-top: 12px;
-    padding: 12px;
-    box-shadow: 3px 3px 8px grey;
-   }
+      position: relative;
+      display: flex;
+      margin: auto;
+      width: 100%;
+      height: fit-content;
+      background-color: white;
+      border-radius: 8px;
+      margin-top: 12px;
+      padding: 12px;
+      box-shadow: 3px 3px 8px grey;
+     }
 
    /* .inother {
     width: 400px;
@@ -159,8 +162,10 @@
    } */
 
    .other-actions button {
-    background: none;
-    border: none;
+      background-color: green;
+
+      /* background: none; */
+      border: none;
     height: fit-content;
     padding: 5px;
     border-radius: 5px;
@@ -258,7 +263,7 @@
    
 }
 
-@media (max-width: 428px) {
+@media (max-width: 428px) and (min-width: 391px) {
    .wonder {
       background-color: whitesmoke;
       color: black;
@@ -347,17 +352,19 @@
       color: white;
       font-weight: bolder;
       font-size: 25px;
+      display: flex;
      }
   
-     .balance button {
+     .balance span {
       position: absolute;
       height: fit-content;
-      top: 37%;
-      left: 65%;
-      padding: 15px 30px;
-      border-radius: 3px;
-      border: none;
-      font-weight: 700; 
+      top: 39%;
+      left: 52%;
+      color: white; 
+     }
+
+     .blancs {
+      margin-left: 10px;
      }
   
      .other-label {
