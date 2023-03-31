@@ -484,12 +484,12 @@ if (stat) {
     });
 }
 
-let prooBtn = document.getElementById('pro');
-if (prooBtn) {
-    prooBtn.addEventListener('click', () => {
-        window.location.href = "savinginput2.html"
-    })
-}
+// let prooBtn = document.getElementById('pro');
+// if (prooBtn) {
+//     prooBtn.addEventListener('click', () => {
+//         window.location.href = "savinginput2.html"
+//     })
+// }
 
 // Done Button (Airtime Status Page)
 let doneBtn = document.getElementById("done");
@@ -508,14 +508,54 @@ if (proBtn) {
     });
 }
 
+// Savings Collection
+let cntSaver = []
+let amounToSave = document.getElementById("saveamount");
+let accountNum = document.getElementById("saveaccount");
+let savePinn = document.getElementById("savepin");
+let saveProBtn = document.getElementById("pro")
 
+if (saveProBtn) {
+    saveProBtn.addEventListener('click', () => {
+
+        if (savePinn.value == loggedhistory.pin && accountNum.value == loggedhistory.accountnumber) {
+    
+            let Saved = {
+                amount: amounToSave.value,
+                bank: accountNum.value,
+                description: "Savings"
+            }
+
+            transactions.push(Saved);
+            cntSaver.push(Saved);
+            localStorage.setItem('Savings', JSON.stringify(cntSaver));
+            localStorage.setItem('Transhistory', JSON.stringify(transactions));
+            
+            window.location.href = "savinginput2.html"
+            
+        }else {
+            alert("Incorrect account number Or Pin")
+        }
+    })
+}
+
+let ser = JSON.parse(localStorage.getItem('Savings'))
 let areYou = document.getElementById('areyou');
 
 if (areYou) {
     areYou.innerHTML = `<div class="are">
-        <div class="depo">Are you sure you want to deposit </div>
+        <div class="depo">Are you sure you want to deposit ${ser.amount}</div>
         <div class="want">You won't be able to withdraw this until after 6 months</div>
     </div>`
+}
+
+// Yes On save
+let yesBtn = document.getElementById("yess");
+
+if (yesBtn) {
+    yesBtn.addEventListener('click', () =>{
+        window.location.href = "dashboard.html"
+    })
 }
 
 // savings button on dashboard
@@ -603,3 +643,4 @@ function togglePassword() {
         icon.innerText = "visibility_off"
     }
 }
+
