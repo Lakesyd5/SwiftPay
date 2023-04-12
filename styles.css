@@ -387,6 +387,10 @@ nav .material-symbols-outlined {
     margin-top: 50px;
 }
 
+.seventh-img {
+    margin-top: 20px;
+}
+
 footer {
     display: flex;
     justify-content: end;

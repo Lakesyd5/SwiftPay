@@ -162,15 +162,13 @@
    } */
 
    .other-actions button {
-      background-color: green;
-
-      /* background: none; */
+      background: none;
       border: none;
-    height: fit-content;
-    padding: 5px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    margin-top: 18px;
+      height: fit-content;
+      padding: 5px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      margin-top: 18px;
    }
 
    .other-actions button img {
@@ -416,17 +414,27 @@
       background-color: white;
       border-radius: 8px;
       margin-top: 12px;
-      padding: 12px;
+      padding: 10px;
       box-shadow: 3px 3px 8px grey;
+     }
+
+     .other-actions .inother {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.25rem;
+      /* padding: 0;
+      background-color: green;
+      width: 110%; */
      }
   
      .other-actions button {
       background: none;
       border: none;
       height: fit-content;
+      width: fit-content;
       padding: 5px;
       border-radius: 5px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       margin-top: 18px;
      }
   

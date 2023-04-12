@@ -92,7 +92,7 @@ let show = document.getElementById("see")
 const copyContent = async () => {
     try {
         await navigator.clipboard.writeText(show.innerText);
-        alert("Copied");
+        // alert("Copied");
 
     } catch (err) {
         console.error("Failed to copy:", err);
@@ -127,8 +127,8 @@ let seep = document.getElementById("pin")
 const copyPin = async () => {
     try {
         await navigator.clipboard.writeText(seep.innerText);
-        alert("Copied");
-        console.log("working");
+        // alert("Copied");
+        // console.log("working");
 
     } catch (err) {
         console.error("Failed to copy:", err);
@@ -249,18 +249,53 @@ let loggedhistory = JSON.parse(localStorage.getItem("loggeduser"))
 //     history.innerHTML = `<h3 class="histno">No Transactions yet</h3>`
 // }
 
+// if (history && hisdata && loggedhistory) {
+//     let userTransactions = hisdata.filter((tranz) => {
+//         return (tranz.from === loggedhistory.firstname + " " + loggedhistory.lastname) ||
+//             (tranz.to === loggedhistory.firstname + ' ' + loggedhistory.lastname) ||
+//             (tranz.type === "airtime" && tranz.description.includes("airtime"));
+//     });
+
+
+//     if (userTransactions.length === 0) {
+//         history.innerHTML = `<h3 class="histno">No transactions yet</h3>`;
+//     } else {
+
+//         userTransactions.forEach((transaction) => {
+//             let amount = transaction.amount.toFixed(2);
+//             let isAirtime = transaction.type === "airtime" && transaction.description.includes("airtime");
+//             if (transaction.from == loggedhistory.firstname + " " + loggedhistory.lastname) {
+//                 amount = "-" + amount;
+//                 amountClass = "from";
+//             } else {
+//                 amount = "+" + amount;
+//                 amountClass = "to";
+//             }
+//             let transactionHTML = `<div class = "dta">
+//                 <div class="narat">
+//                     <div>${isAirtime ? 'Airtime' : 'Payment'} ${transaction.from === loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from === loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
+//                 </div>
+//                 <div class="prc">
+//                     <div class="${amountClass}">NGN ${amount}</div>
+//                 </div>
+//             </div>`;
+//             history.innerHTML += transactionHTML;
+//         });
+//     }
+
+// }
+
+
 if (history && hisdata && loggedhistory) {
     let userTransactions = hisdata.filter((tranz) => {
         return (tranz.from === loggedhistory.firstname + " " + loggedhistory.lastname) ||
             (tranz.to === loggedhistory.firstname + ' ' + loggedhistory.lastname) ||
-            (tranz.type === "airtime" && tranz.description.includes("airtime"));
+            (tranz.type === "debit" && tranz.description.includes("airtime"));
     });
-
 
     if (userTransactions.length === 0) {
         history.innerHTML = `<h3 class="histno">No transactions yet</h3>`;
     } else {
-
         userTransactions.forEach((transaction) => {
             let amount = transaction.amount.toFixed(2);
             let isAirtime = transaction.type === "airtime" && transaction.description.includes("airtime");
@@ -271,19 +306,31 @@ if (history && hisdata && loggedhistory) {
                 amount = "+" + amount;
                 amountClass = "to";
             }
-            let transactionHTML = `<div class = "dta">
-                <div class="narat">
-                    <div>${isAirtime ? 'Airtime' : 'Payment'} ${transaction.from === loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from === loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
-                </div>
-                <div class="prc">
-                    <div class="${amountClass}">NGN ${amount}</div>
-                </div>
-            </div>`;
+            let transactionHTML = '';
+            if (isAirtime && transaction.boughtBy === loggedhistory.firstname) {
+                transactionHTML = `<div class = "dta">
+                    <div class="narat">
+                        <div>Airtime bought</div>
+                    </div>
+                    <div class="prc">
+                        <div class="${amountClass}">NGN ${amount}</div>
+                    </div>
+                </div>`;
+            } else {
+                transactionHTML = `<div class = "dta">
+                    <div class="narat">
+                        <div>${isAirtime ? 'Airtime' : 'Payment'} ${transaction.from === loggedhistory.firstname + " " + loggedhistory.lastname ? "to" : "from"} ${transaction.from === loggedhistory.firstname + " " + loggedhistory.lastname ? transaction.to : transaction.from}</div>
+                    </div>
+                    <div class="prc">
+                        <div class="${amountClass}">NGN ${amount}</div>
+                    </div>
+                </div>`;
+            }
             history.innerHTML += transactionHTML;
         });
     }
-
 }
+
 
 // Go home from generate card
 function goHome() {
@@ -511,18 +558,18 @@ if (proBtn) {
 // Savings Collection
 let cntSaver = []
 let amounToSave = document.getElementById("saveamount");
-let accountNum = document.getElementById("saveaccount");
+let savenum = document.getElementById("saeacc");
 let savePinn = document.getElementById("savepin");
 let saveProBtn = document.getElementById("pro")
 
 if (saveProBtn) {
     saveProBtn.addEventListener('click', () => {
 
-        if (savePinn.value == loggedhistory.pin && accountNum.value == loggedhistory.accountnumber) {
-    
+        if (savePinn.value == loggedhistory.pin && savenum.value == loggedhistory.accountnumber) {
+
             let Saved = {
                 amount: amounToSave.value,
-                bank: accountNum.value,
+                bank: savenum.value,
                 description: "Savings"
             }
 
@@ -530,39 +577,75 @@ if (saveProBtn) {
             cntSaver.push(Saved);
             localStorage.setItem('Savings', JSON.stringify(cntSaver));
             localStorage.setItem('Transhistory', JSON.stringify(transactions));
-            
+
             window.location.href = "savinginput2.html"
-            
-        }else {
+
+        } else {
             alert("Incorrect account number Or Pin")
         }
     })
 }
 
-let ser = JSON.parse(localStorage.getItem('Savings'))
+let ser = JSON.parse(localStorage.getItem('Savings'));
 let areYou = document.getElementById('areyou');
+// let moneySaved = ser.amount.toFixed(2);
 
 if (areYou) {
-    areYou.innerHTML = `<div class="are">
-        <div class="depo">Are you sure you want to deposit ${ser.amount}</div>
+
+    ser.forEach(element => {
+        areYou.innerHTML = `<div class="are">
+        <div class="depo">Are you sure you want to deposit NGN ${element.amount}</div>
         <div class="want">You won't be able to withdraw this until after 6 months</div>
     </div>`
+    });
+
+    // Yes On save
+    let yesBtn = document.getElementById("yess");
+
+    if (yesBtn) {
+        yesBtn.addEventListener('click', () => {
+            let totalAmount = ser.reduce((acc, curr) => acc + parseFloat(curr.amount), 0);
+            user.balance -= totalAmount;
+            let userIndex = mainAccount.findIndex(account => account.firstname == user.firstname);
+            mainAccount[userIndex].balance -= totalAmount;
+            // user.balance -= parseFloat(ser.amount);
+            // let userIndex = mainAccount.findIndex(account => account.firstname == user.firstname);
+            // mainAccount[userIndex].balance -= parseFloat(ser.amount);
+
+
+            localStorage.setItem('loggeduser', JSON.stringify(user));
+            localStorage.setItem('account', JSON.stringify(mainAccount));
+            window.location.href = "savingsuccess.html"
+        })
+    }
+
+    // No on save
+    let nobtn = document.getElementById('noo')
+    if (nobtn) {
+        nobtn.addEventListener('click', () => {
+            window.location.href = "dashboard.html"
+        })
+    }
 }
 
-// Yes On save
-let yesBtn = document.getElementById("yess");
+// Save Successful
+let savesuccShow = document.getElementById('savesuccess');
 
-if (yesBtn) {
-    yesBtn.addEventListener('click', () =>{
-        window.location.href = "dashboard.html"
-    })
+if (savesuccShow) {
+    ser.forEach(element => {
+        savesuccShow.innerHTML = `<div class="jig">
+        <img src="./images/Group 82.png" alt="">
+        <h3>Successfully Deposited</h3>
+        <p>You saved NGN ${element.amount}</p>
+      </div>`
+    });
 }
 
 // savings button on dashboard
 let savingsBtn = document.getElementById('save');
 
 if (savingsBtn) {
-    savingsBtn.addEventListener('click', () =>{
+    savingsBtn.addEventListener('click', () => {
         window.location.href = "onboardingsaving.html"
     })
 }
@@ -571,9 +654,9 @@ if (savingsBtn) {
 let getAppBtn = document.getElementById('get');
 
 if (getAppBtn) {
-   getAppBtn.addEventListener('click', () => {
-    window.location.href = "start.html"
-   }) 
+    getAppBtn.addEventListener('click', () => {
+        window.location.href = "start.html"
+    })
 }
 
 
@@ -587,17 +670,17 @@ let cardGenerateBtn = document.getElementById('card')
 function generateCardNumber() {
     let cardNumber = '';
     for (let i = 0; i < 16; i++) {
-      cardNumber += Math.floor(Math.random() * 10);
-      if (i % 4 === 3 && i !== 15) {
-        cardNumber += ' '; // add spaces every 4 digits for readability
-      }
+        cardNumber += Math.floor(Math.random() * 10);
+        if (i % 4 === 3 && i !== 15) {
+            cardNumber += ' '; // add spaces every 4 digits for readability
+        }
     }
     return cardNumber;
-  }
+}
 
 if (cardGenerateBtn) {
-    
-    cardGenerateBtn.addEventListener('click', () =>{
+
+    cardGenerateBtn.addEventListener('click', () => {
         let cardNumber = generateCardNumber();
         let cardinfo = {
             cardnum: cardNumber,
@@ -610,7 +693,7 @@ if (cardGenerateBtn) {
 
         window.location.href = "cardloading.html"
     });
-    
+
 }
 
 let displayCard = document.getElementById('cardnum');
@@ -627,7 +710,7 @@ let shh = document.getElementById('shh');
 if (shh) {
     allcardIn.forEach(element => {
         shh.innerHTML = element.cardnum
-    } )
+    })
 }
 
 // show & hide balance
@@ -635,7 +718,7 @@ function togglePassword() {
     let balance = document.querySelector(".blancs");
     let icon = document.getElementById("icon");
 
-    if (balance.style.visibility === "hidden" ) {
+    if (balance.style.visibility === "hidden") {
         balance.style.visibility = "visible"
         icon.innerText = "visibility"
     } else {

@@ -13,7 +13,7 @@
 
     div .cont{
         position: absolute;
-        top: 525px;
+        top: 480px;
         color: white;
         font-size: 27px;
         font-family: 'Poppins', sans-serif;
@@ -23,7 +23,7 @@
 
     div p {
         position: absolute;
-        top: 670px;
+        top: 620px;
         left: 45px;
         color: white;
         font-family: 'Poppins', sans-serif;
@@ -39,7 +39,7 @@
     div button {
         position: absolute;
         width: 92%;
-        top: 710px;
+        top: 670px;
         font-family: 'Poppins', sans-serif;
         font-size: 18px;
         font-weight: 700;
@@ -52,7 +52,7 @@
     }
 }
 
-@media (max-width: 428px) {
+@media (max-width: 428px) and (min-width: 428px) {
     body {
         position: relative;
         background-image: url("./images/Onboarding\ Screen\ 1.png");
@@ -66,7 +66,7 @@
 
     div .cont{
         position: absolute;
-        top: 500px;
+        top: 530px;
         color: white;
         font-size: 27px;
         font-family: 'Poppins', sans-serif;
@@ -76,7 +76,7 @@
 
     div p {
         position: absolute;
-        top: 650px;
+        top: 670px;
         left: 32px;
         color: white;
         font-family: 'Poppins', sans-serif;
@@ -89,7 +89,7 @@
     div button {
         position: absolute;
         width: 85%;
-        top: 700px;
+        top: 710px;
         left: 31px;
         font-family: 'Poppins', sans-serif;
         font-size: 18px;

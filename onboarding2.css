@@ -49,7 +49,7 @@
     }
 }
 
-@media (max-width: 428px) {
+@media (max-width: 428px) and (min-width: 428px) {
     body {
         background-image: url("./images/Onboarding\ Screen\ 2.png");
         background-repeat: no-repeat;
@@ -62,7 +62,7 @@
 
     div .cont{
         position: absolute;
-        top: 500px;
+        top: 560px;
         left: 35px;
         color: white;
         font-size: 27px;
@@ -74,7 +74,7 @@
 
     div p {
         position: absolute;
-        top: 590px;
+        top: 650px;
         left: 35px;
         color: white;
         font-family: 'Poppins', sans-serif;
@@ -87,7 +87,7 @@
     div button {
         position: absolute;
         width: 85%;
-        top: 660px;
+        top: 710px;
         left: 32px;
         font-family: 'Poppins', sans-serif;
         font-size: 18px;
