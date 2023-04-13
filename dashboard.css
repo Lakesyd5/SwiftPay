@@ -36,12 +36,11 @@
   .bell {
     background: none;
     border: none;
-    /* font-size: 20px; */
    }
 
    .bell img {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
    }
 
    .bar {

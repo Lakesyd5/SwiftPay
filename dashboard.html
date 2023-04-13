@@ -27,8 +27,8 @@
                 </div>
             </div>
             <div class="notify">
-                <button class="bell"><img src="./images/SwiftPay Image Assets/notification.png" alt=""></i></button>
-                <button class="bar"><img src="./images/SwiftPay Image Assets/menu.png" alt=""></i></button>
+                <button class="bell"type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><img src="./images/SwiftPay Image Assets/notification.png" alt=""></i></button>
+                <!-- <button class="bar" ><img src="./images/SwiftPay Image Assets/menu.png" alt=""></i></button> -->
             </div>
         </nav>
         <!--  -->
@@ -119,6 +119,17 @@
             </div>
         </div>
         <!--  -->
+
+        <!-- Top Offcanvas -->
+        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasTopLabel">Notifications</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <div>Created an Account</div>
+            </div>
+          </div>
     </main>
 </body>
 </html>
