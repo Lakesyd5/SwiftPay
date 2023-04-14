@@ -12,7 +12,7 @@
 
     div .cont{
         position: absolute;
-        top: 570px;
+        top: 470px;
         color: white;
         font-size: 27px;
         font-family: 'Poppins', sans-serif;
@@ -23,8 +23,8 @@
 
     div p {
         position: absolute;
-        top: 670px;
-        left: 45px;
+        top: 560px;
+        left: 28px;
         color: white;
         font-family: 'Poppins', sans-serif;
         margin: auto;
@@ -36,7 +36,7 @@
     div button {
         position: absolute;
         width: 88%;
-        top: 710px;
+        top: 605px;
         font-family: 'Poppins', sans-serif;
         font-size: 18px;
         font-weight: 700;
@@ -62,7 +62,7 @@
 
     div .cont{
         position: absolute;
-        top: 560px;
+        top: 520px;
         left: 35px;
         color: white;
         font-size: 27px;
@@ -74,7 +74,7 @@
 
     div p {
         position: absolute;
-        top: 650px;
+        top: 605px;
         left: 35px;
         color: white;
         font-family: 'Poppins', sans-serif;
@@ -87,7 +87,7 @@
     div button {
         position: absolute;
         width: 85%;
-        top: 710px;
+        top: 660px;
         left: 32px;
         font-family: 'Poppins', sans-serif;
         font-size: 18px;
